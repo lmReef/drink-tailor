@@ -1,0 +1,23 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+  pre_build:
+    commands:
+      - echo [pee] Running npm ci...
+      - npm ci
+  build:
+    commands:
+      - echo [pee] Build started on `date`
+      - npm run build
+  post_build:
+    commands:
+      - echo [pee] Build completed on `date`
+artifacts:
+  files:
+    - .next/**
+    - package.json
+    - next.config.js
+    - .npmrc
