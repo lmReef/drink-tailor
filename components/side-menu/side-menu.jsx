@@ -8,9 +8,9 @@ const SideMenuContainer = styled.div`
   height: 100%;
   width: 30%;
 
-  border: 0 solid ${(props) => props.theme[3]};
-  border-width: 0 3px 0 0;
-  background-color: ${(props) => props.theme[2]};
+  /* border: 0 solid ${(props) => props.theme[3]};
+  border-width: 0 3px 0 0; */
+  background-color: ${(props) => props.theme[3]};
 
   .button- {
     &find {

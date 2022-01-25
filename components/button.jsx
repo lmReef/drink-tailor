@@ -5,7 +5,7 @@ const StyledButton = styled.button`
   padding: 0.75rem 2rem;
 
   font-size: 1rem;
-  font-family: Poppins;
+  font-family: Quicksand;
   letter-spacing: 1px;
 
   background-color: ${(props) => props.theme[0]};

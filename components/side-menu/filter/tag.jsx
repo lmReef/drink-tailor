@@ -12,6 +12,7 @@ const StyledDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: content-box;
 
   font-size: 0.95rem;
   text-align: center;
@@ -28,12 +29,12 @@ const StyledDiv = styled.div`
   }
 
   &.inactive {
-    filter: brightness(1.1) contrast(0.7) opacity(0.8);
+    filter: brightness(1) contrast(0.7) opacity(0.8);
     background-color: ${(props) => props.theme[0]};
     color: ${(props) => props.theme[3]};
   }
   &.active {
-    filter: brightness(0.9) contrast(0.9) opacity(1);
+    filter: brightness(1) contrast(1) opacity(1);
     background-color: ${(props) => props.theme[4]};
     color: ${(props) => props.theme[3]};
   }

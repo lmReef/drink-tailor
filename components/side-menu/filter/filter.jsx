@@ -60,24 +60,22 @@ const Filter = ({ activeTags, handleTagClick, theme }) => {
   const types = [''];
 
   return (
-    <>
-      <StyledDiv>
-        <h2>Type</h2>
-        <Tags
-          theme={theme}
-          tags={types}
-          activeTags={activeTags}
-          handleTagClick={handleTagClick}
-        />
-        <h2>Liquors</h2>
-        <Tags
-          theme={theme}
-          tags={liquors}
-          activeTags={activeTags}
-          handleTagClick={handleTagClick}
-        />
-      </StyledDiv>
-    </>
+    <StyledDiv>
+      <h2>Type</h2>
+      <Tags
+        theme={theme}
+        tags={types}
+        activeTags={activeTags}
+        handleTagClick={handleTagClick}
+      />
+      <h2>Liquors</h2>
+      <Tags
+        theme={theme}
+        tags={liquors}
+        activeTags={activeTags}
+        handleTagClick={handleTagClick}
+      />
+    </StyledDiv>
   );
 };
 

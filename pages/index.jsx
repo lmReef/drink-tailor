@@ -14,6 +14,8 @@ const Wrapper = styled.div`
 
   display: flex;
   flex-direction: row;
+
+  color: ${(props) => props.theme[1]};
 `;
 
 const Content = styled.div`
@@ -22,7 +24,7 @@ const Content = styled.div`
   overflow-y: scroll;
 
   text-align: center;
-  background-color: white;
+  background-color: ${(props) => [props.theme[2]]};
   /* background-color: ${(props) => props.theme[0]}; */
 `;
 
@@ -61,7 +63,8 @@ const fetchCocktails = async (tags) => {
 };
 
 const Index = () => {
-  const theme = colors_light;
+  // const theme = colors_light;
+  const theme = colors_dark;
   const [timeoutId, setTimeoutId] = useState(null);
   const [data, setData] = useState(null);
 
@@ -91,7 +94,7 @@ const Index = () => {
   console.log('data', data);
 
   return (
-    <Wrapper>
+    <Wrapper theme={theme}>
       <SideMenu theme={theme} handleTagChange={handleTagChange} />
       <Content theme={theme} className="main-wrapper">
         {typeof data !== 'string' && data?.length > 0

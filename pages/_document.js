@@ -25,8 +25,8 @@ export default class MyDocument extends Document {
             <meta name="description" content="Cocktail recommender" />
             <link rel="icon" href="/favicon.ico" />
             <link
-              rel="preload"
-              href="https://fonts.googleapis.com/css?family=Poppins&display=optional"
+              href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
+              rel="stylesheet"
             />
           </Html>
         ),

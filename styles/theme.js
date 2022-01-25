@@ -7,10 +7,10 @@ export const colors_light = [
 ];
 
 export const colors_dark = [
-  '#1D3557',
-  '#457B9D',
-  '#A8DADC',
-  '#F1FAEE',
+  '#efefef',
+  '#8e8e8e',
+  '#191919',
+  '#111111',
   '#E63946',
 ];
 
