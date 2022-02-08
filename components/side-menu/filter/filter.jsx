@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
-import Tags from './tag';
+import Tags from './tags';
 
 const StyledDiv = styled.div`
   height: 100%;
@@ -21,6 +21,7 @@ const StyledDiv = styled.div`
     text-align: center;
     font-size: 1.3rem;
     letter-spacing: 1px;
+    font-size: 1.5rem;
   }
 
   .tags {
@@ -56,8 +57,68 @@ const Arrow = styled.div`
 
 const Filter = ({ activeTags, handleTagClick, theme }) => {
   // TODO: add all the filters
-  const liquors = ['Gin', 'Vodka', 'Rum', 'Scotch', 'Tequila'];
-  const types = [''];
+  const types = ['Alcoholic', 'Non-Alcoholic'];
+  const mixers = [
+    'Soda Water',
+    'Tonic Water',
+    'Cranberry Juice',
+    'Orange Juice',
+    'Ginger Ale',
+    'Lemonade',
+  ];
+  const liquors = [
+    'Gin',
+    'Vodka',
+    'Rum',
+    'Dark Rum',
+    'Light Rum',
+    'Scotch',
+    'Tequila',
+    'Bourbon',
+    'Brandy',
+    'Cognac',
+    'Whiskey',
+    'Champagne',
+    'Prosecco',
+    'Red Wine',
+    '151 Proof Rum',
+  ];
+  const liqueurs = [
+    'Triple Sec',
+    'Blue Curacao',
+    'Malibu Rum',
+    'Aperol',
+    'Sambuca',
+    'Campari',
+    'Dry Vermouth',
+    'Sweet Vermouth',
+    'Galliano',
+    'Green Chartreuse',
+    'Absinthe',
+    'Jagermeister',
+    'Kahlua',
+  ];
+  const others = [
+    'Bitters',
+    'Grenadine',
+    'Cream',
+    'Lemon Juice',
+    'Lemon',
+    'Orange',
+    'Lime',
+    'Lime Juice',
+    'Egg White',
+    'Egg',
+    'Honey',
+    'Maraschino Cherry',
+    'Mint',
+    'Pineapple',
+    'Sugar',
+    'Elderflower cordial',
+  ];
+
+  // TODO: add custom ingredient search input
+  // TODO: make sections collapsable on mobile
 
   return (
     <StyledDiv>
@@ -68,10 +129,31 @@ const Filter = ({ activeTags, handleTagClick, theme }) => {
         activeTags={activeTags}
         handleTagClick={handleTagClick}
       />
-      <h2>Liquors</h2>
+      <h2>Mixers</h2>
+      <Tags
+        theme={theme}
+        tags={mixers}
+        activeTags={activeTags}
+        handleTagClick={handleTagClick}
+      />
+      <h2>Spirits</h2>
       <Tags
         theme={theme}
         tags={liquors}
+        activeTags={activeTags}
+        handleTagClick={handleTagClick}
+      />
+      <h2>Liqueurs</h2>
+      <Tags
+        theme={theme}
+        tags={liqueurs}
+        activeTags={activeTags}
+        handleTagClick={handleTagClick}
+      />
+      <h2>Extras</h2>
+      <Tags
+        theme={theme}
+        tags={others}
         activeTags={activeTags}
         handleTagClick={handleTagClick}
       />

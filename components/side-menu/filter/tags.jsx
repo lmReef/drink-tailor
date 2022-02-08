@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 // TODO: make the tags look better
 const StyledDiv = styled.div`
-  height: fit-content;
+  height: 4rem;
   width: fit-content;
-  min-width: 4rem;
+  min-width: 5rem;
   margin: 0.5rem;
   padding: 0.45rem 0.9rem;
 
@@ -19,7 +19,7 @@ const StyledDiv = styled.div`
   user-select: none;
   color: ${(props) => props.theme[2]};
 
-  border-radius: 1000px;
+  border-radius: 10px;
   cursor: pointer;
 
   transition: all 0.13s ease-out;

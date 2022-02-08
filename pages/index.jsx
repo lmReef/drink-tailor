@@ -29,24 +29,6 @@ const Content = styled.div`
 `;
 
 const fetchCocktails = async (tags) => {
-  // let query = '';
-  // for (let i in tags) {
-  //   query += tags[i] += '%2C';
-  // }
-
-  // const res = await fetch(
-  //   `https://the-cocktail-db.p.rapidapi.com/filter.php?i=Gin`,
-  //   {
-  //     method: 'GET',
-  //     headers: {
-  //       'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
-  //       'x-rapidapi-key': 'cd095dd235mshadd3945f9bfaac1p1347b1jsnb88073d8b4f0',
-  //     },
-  //   },
-  // );
-
-  // return await res.json();
-
   const options = {
     method: 'GET',
     url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
