@@ -57,7 +57,6 @@ const Arrow = styled.div`
 
 const Filter = ({ activeTags, handleTagClick, theme }) => {
   // TODO: add all the filters
-  const types = ['Alcoholic', 'Non-Alcoholic'];
   const mixers = [
     'Soda Water',
     'Tonic Water',
@@ -122,20 +121,6 @@ const Filter = ({ activeTags, handleTagClick, theme }) => {
 
   return (
     <StyledDiv>
-      <h2>Type</h2>
-      <Tags
-        theme={theme}
-        tags={types}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
-      <h2>Mixers</h2>
-      <Tags
-        theme={theme}
-        tags={mixers}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
       <h2>Spirits</h2>
       <Tags
         theme={theme}
@@ -147,6 +132,13 @@ const Filter = ({ activeTags, handleTagClick, theme }) => {
       <Tags
         theme={theme}
         tags={liqueurs}
+        activeTags={activeTags}
+        handleTagClick={handleTagClick}
+      />
+      <h2>Mixers</h2>
+      <Tags
+        theme={theme}
+        tags={mixers}
         activeTags={activeTags}
         handleTagClick={handleTagClick}
       />
