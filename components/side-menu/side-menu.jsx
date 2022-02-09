@@ -7,6 +7,7 @@ import Filter from './filter/filter';
 const SideMenuContainer = styled.div`
   height: 100%;
   width: 30%;
+  min-width: 30rem;
 
   padding: 0.8rem;
 

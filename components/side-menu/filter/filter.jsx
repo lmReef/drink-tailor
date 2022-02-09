@@ -10,7 +10,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: ${(props) => props.theme[1]};
+  background-color: ${(props) => props.theme[3]};
 
   /* transform: scaleY(1); */
   transition: all 0.2s;
@@ -21,7 +21,8 @@ const StyledDiv = styled.div`
     text-align: center;
     font-size: 1.3rem;
     letter-spacing: 1px;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
+    color: ${(props) => props.theme[4]};
   }
 
   .tags {
@@ -120,7 +121,7 @@ const Filter = ({ activeTags, handleTagClick, theme }) => {
   // TODO: make sections collapsable on mobile
 
   return (
-    <StyledDiv>
+    <StyledDiv theme={theme}>
       <h2>Spirits</h2>
       <Tags
         theme={theme}
