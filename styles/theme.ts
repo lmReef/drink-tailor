@@ -14,6 +14,25 @@ export const colors_dark = [
   '#E63946',
 ];
 
+export const colors = {
+  dark: {
+    primary: '#efefef',
+    secondary: '#8e8e8e',
+    accent: '#E63946',
+    text: '#8e8e8e',
+    background1: '#191919',
+    background2: '#111111',
+  },
+  light: {
+    primary: '#457B9D',
+    secondary: '#1D3557',
+    accent: '#E63946',
+    text: '#191919',
+    background1: '#F1FAEE',
+    background2: '#A8DADC',
+  },
+};
+
 export const breakpoints_max = {
   xs: 480,
   sm: 768,

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { breakpoints_min, breakpoints_max } from '../../styles/theme';
-import Button from '../button';
+import Button from '../common/button';
 import Filter from './filter/filter';
 
 const SideMenuContainer = styled.div`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints_min, breakpoints_max } from '../styles/theme';
+import { breakpoints_min, breakpoints_max } from '../../styles/theme';
 
 const StyledButton = styled.button`
   padding: 0.75rem 2rem;
