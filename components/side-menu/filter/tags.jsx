@@ -55,7 +55,7 @@ const Tag = ({ name, activeTags, handleTagClick, theme }) => {
 
   useEffect(() => {
     setActiveState(activeTags.includes(name) ? 'active' : 'inactive');
-  }, [activeTags]);
+  }, [activeTags, name]);
 
   // left click
   const handleLeftClick = () => {
