@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 import styled from 'styled-components';
-import axios from 'axios';
+import axios, { AxiosRequestConfig } from 'axios';
 import Image from 'next/image';
 import {
   breakpoints_min,
@@ -59,7 +59,7 @@ const Content = styled.div`
 `;
 
 const getDrinks = async (tags) => {
-  const options = {
+  const options: AxiosRequestConfig = {
     method: 'GET',
     url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
     params: { i: `${tags.reduce((a, b) => `${a},${b}`)}` },
@@ -75,7 +75,7 @@ const getDrinks = async (tags) => {
 };
 
 const getDetails = async (id) => {
-  var options = {
+  var options: AxiosRequestConfig = {
     method: 'GET',
     url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
     params: { i: id },
