@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { breakpoints_min, breakpoints_max, colors } from '../../styles/theme';
 import Button from '../common/button';
@@ -22,28 +21,13 @@ const SideMenuContainer = styled.div`
   }
 `;
 
-const SideMenu = ({ handleTagChange }) => {
-  // TODO: button to clear all activeTags
-  const [activeTags, setActiveTags] = useState([]);
-
-  const handleTagClick = (name) => {
-    if (!activeTags.includes(name))
-      setActiveTags((activeTags) => [...activeTags, name]);
-    else
-      setActiveTags((activeTags) => [
-        ...activeTags.filter((tag) => tag !== name),
-      ]);
-  };
-
-  useEffect(() => {
-    handleTagChange(activeTags);
-  }, [activeTags]);
-
+const SideMenu = () => {
   return (
     <SideMenuContainer>
-      <Filter activeTags={activeTags} handleTagClick={handleTagClick} />
+      <Filter />
 
       {/* <Button className="button-find" text="Find"  /> */}
+      {/* TODO: make a button to clear em all */}
     </SideMenuContainer>
   );
 };

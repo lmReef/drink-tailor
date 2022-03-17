@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import { colors } from '../../../styles/theme';
 import Tags from './tags';
@@ -13,7 +12,6 @@ const StyledDiv = styled.div`
 
   background-color: ${colors.background2};
 
-  /* transform: scaleY(1); */
   transition: all 0.2s;
   transform-origin: top;
 
@@ -57,7 +55,7 @@ const Arrow = styled.div`
   }
 `;
 
-const Filter = ({ activeTags, handleTagClick }) => {
+const Filter = () => {
   // TODO: add all the filters
   const mixers = [
     'Soda Water',
@@ -118,35 +116,19 @@ const Filter = ({ activeTags, handleTagClick }) => {
     'Elderflower cordial',
   ];
 
-  // TODO: add custom ingredient search input
+  // TODO: add custom ingredient search input?
   // TODO: make sections collapsable on mobile
 
   return (
     <StyledDiv>
       <h2>Spirits</h2>
-      <Tags
-        tags={liquors}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
+      <Tags tags={liquors} />
       <h2>Liqueurs</h2>
-      <Tags
-        tags={liqueurs}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
+      <Tags tags={liqueurs} />
       <h2>Mixers</h2>
-      <Tags
-        tags={mixers}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
+      <Tags tags={mixers} />
       <h2>Extras</h2>
-      <Tags
-        tags={others}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
+      <Tags tags={others} />
     </StyledDiv>
   );
 };

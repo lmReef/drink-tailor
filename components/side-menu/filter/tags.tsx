@@ -1,6 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { colors } from '../../../styles/theme';
+import { addTag, removeTag } from './tagsSlice';
 
 // TODO: make the tags look better
 const StyledDiv = styled.div`
@@ -39,52 +41,37 @@ const StyledDiv = styled.div`
     background-color: ${colors.accent};
     color: ${colors.background1};
   }
-  &.disabled {
-    filter: brightness(0.8) contrast(1) opacity(1);
-    background-color: ${colors.accent};
-    color: ${colors.text2};
-  }
 
   svg {
     height: 0.5rem;
   }
 `;
 
-const Tag = ({ name, activeTags, handleTagClick }) => {
-  const ref = useRef(null);
-  const [activeState, setActiveState] = useState('inactive');
+const Tag = ({ name }) => {
+  const dispatch = useDispatch();
+  const [activeState, setActiveState] = useState<boolean>(false);
 
   useEffect(() => {
-    setActiveState(activeTags.includes(name) ? 'active' : 'inactive');
-  }, [activeTags, name]);
+    dispatch(activeState ? addTag(name) : removeTag(name));
+  }, [activeState, dispatch, name]);
 
   return (
     <StyledDiv
-      ref={ref}
-      className={`tag ${activeState}`}
-      onClick={() => {
-        handleTagClick(name);
-      }}
+      className={`tag ${activeState ? 'active' : 'inactive'}`}
+      onClick={() => setActiveState(!activeState)}
     >
       {name}
     </StyledDiv>
   );
 };
 
-const Tags = ({ tags, activeTags, handleTagClick }) => {
+const Tags = ({ tags }) => {
   tags.sort();
 
   return (
     <div className="tags">
       {tags.map((tag, index) => {
-        return (
-          <Tag
-            key={index}
-            name={tag}
-            activeTags={activeTags}
-            handleTagClick={handleTagClick}
-          />
-        );
+        return <Tag key={index} name={tag} />;
       })}
     </div>
   );

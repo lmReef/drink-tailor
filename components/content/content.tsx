@@ -1,12 +1,13 @@
+// TODO: look into this error:
 /* eslint-disable @next/next/no-img-element */
-import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 import styled from 'styled-components';
-import axios, { AxiosRequestConfig } from 'axios';
-import Image from 'next/image';
+import axios from 'axios';
 
 import { colors } from '../../styles/theme';
+import { selectAllTags } from '../side-menu/filter/tagsSlice';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -45,7 +46,30 @@ const StyledContent = styled.div`
   }
 `;
 
-const Content = ({ drinks, hasTags }) => {
+const Content = () => {
+  const activeTags: string[] = useSelector(selectAllTags);
+  const [drinks, setDrinks] = useState<DrinkBasic[]>([]);
+  const [hasTags, setHasTags] = useState<boolean>(false);
+
+  useEffect(() => {
+    const handleTagsChange = async () => {
+      if (activeTags.length === 0) {
+        setDrinks([]);
+        setHasTags(false);
+        return;
+      }
+
+      const drinksRes: DrinkBasic[] = await (
+        await axios.get('/api/get/drinks-by-tags?tags=' + activeTags)
+      ).data;
+
+      setDrinks(drinksRes);
+      setHasTags(true);
+    };
+
+    handleTagsChange();
+  }, [activeTags]);
+
   return (
     <StyledContent>
       {typeof drinks !== 'string' && drinks?.length > 0 ? (
@@ -64,7 +88,7 @@ const Content = ({ drinks, hasTags }) => {
             </div>
           );
         })
-      ) : hasTags === false ? (
+      ) : !hasTags ? (
         <h2 className="no-drinks">
           Pick a few options on the left to get started.
         </h2>
