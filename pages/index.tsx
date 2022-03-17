@@ -7,9 +7,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import Image from 'next/image';
 
 import SideMenu from '../components/side-menu/side-menu';
-import Button from '../components/common/button';
 import { colors } from '../styles/theme';
-import { changeTheme } from '../styles/themeSlice';
 import Navbar from '../components/top-bar/navbar';
 
 const Wrapper = styled.div`
@@ -125,10 +123,9 @@ const Index = () => {
 
   return (
     <Wrapper>
-      <SideMenu handleTagChange={handleTagChange} />
       <div className="col">
         <Navbar />
-
+        <SideMenu handleTagChange={handleTagChange} />
         <Content>
           {typeof data !== 'string' && data?.length > 0 ? (
             data?.map((drink, index) => {
