@@ -8,7 +8,7 @@ const StyledButton = styled.div`
   width: 4rem;
   height: 2rem;
 
-  margin: auto 1rem auto 0;
+  margin: auto 1rem auto auto;
 
   background-color: ${colors.secondary};
   border-radius: 110px;
