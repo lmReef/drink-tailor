@@ -22,6 +22,12 @@ const Wrapper = styled.div`
   .row {
     /* width: 100%; */
     display: flex;
+    flex-direction: row;
+  }
+  .col {
+    /* width: 100%; */
+    display: flex;
+    flex-direction: column;
   }
 `;
 
@@ -62,43 +68,10 @@ const Content = styled.div`
   }
 `;
 
-const getDrinks = async (tags) => {
-  const options: AxiosRequestConfig = {
-    method: 'GET',
-    url: 'https://the-cocktail-db.p.rapidapi.com/filter.php',
-    params: { i: `${tags.reduce((a, b) => `${a},${b}`)}` },
-    headers: {
-      'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
-      'x-rapidapi-key': 'cd095dd235mshadd3945f9bfaac1p1347b1jsnb88073d8b4f0',
-    },
-  };
-
-  const { data } = await axios.request(options);
-
-  return data.drinks;
-};
-
-const getDetails = async (id) => {
-  var options: AxiosRequestConfig = {
-    method: 'GET',
-    url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
-    params: { i: id },
-    headers: {
-      'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
-      'x-rapidapi-key': 'cd095dd235mshadd3945f9bfaac1p1347b1jsnb88073d8b4f0',
-    },
-  };
-
-  const { data } = await axios.request(options);
-
-  return data.drinks[0];
-};
-
 const Index = () => {
   const dispatch = useDispatch();
-  const [timeoutId, setTimeoutId] = useState(null);
-  const [data, setData] = useState(null);
-  const [hasTags, setHasTags] = useState(false);
+  const [drinks, setData] = useState<DrinkBasic[]>(null);
+  const [hasTags, setHasTags] = useState<boolean>(false);
 
   const handleTagChange = async (tags) => {
     if (tags.length === 0) {
@@ -107,19 +80,12 @@ const Index = () => {
       return;
     }
 
-    setData(await getDrinks(tags));
+    const drinksRes: DrinkBasic[] = await (
+      await axios.get('/api/get/drinks-by-tags?tags=' + tags)
+    ).data;
+
+    setData(drinksRes);
     setHasTags(true);
-
-    // TODO: implement delay
-    // if (timeoutId) clearTimeout(timeoutId);
-
-    // setTimeoutId(
-    //   setTimeout(() => {
-    //     setData(fetchCocktails(tags));
-    //     console.log(data);
-    //     setTimeoutId(null);
-    //   }, 1000),
-    // );
   };
 
   return (
@@ -129,8 +95,8 @@ const Index = () => {
         <div className="row">
           <SideMenu handleTagChange={handleTagChange} />
           <Content>
-            {typeof data !== 'string' && data?.length > 0 ? (
-              data?.map((drink, index) => {
+            {typeof drinks !== 'string' && drinks?.length > 0 ? (
+              drinks?.map((drink, index) => {
                 return (
                   <div key={index} className="drink-card">
                     <img

@@ -37,7 +37,7 @@ const SideMenu = ({ handleTagChange }) => {
 
   useEffect(() => {
     handleTagChange(activeTags);
-  }, [activeTags, handleTagChange]);
+  }, [activeTags]);
 
   return (
     <SideMenuContainer>
