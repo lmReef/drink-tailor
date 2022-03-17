@@ -11,7 +11,8 @@ import { colors } from '../styles/theme';
 import Navbar from '../components/top-bar/navbar';
 
 const Wrapper = styled.div`
-  height: 100vh;
+  /* height = 100vh - height of navbar */
+  height: calc(100vh - 4rem);
 
   display: flex;
 

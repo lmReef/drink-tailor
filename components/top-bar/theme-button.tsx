@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMoon } from '@fortawesome/free-solid-svg-icons';
+import { faSun } from '@fortawesome/free-solid-svg-icons';
 
 import { colors } from '../../styles/theme';
 import { changeTheme, selectTheme } from '../../styles/themeSlice';
@@ -20,6 +23,10 @@ const StyledSwitch = styled.div`
   width: 2rem;
   height: 2rem;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: ${colors.primary};
   border-radius: 110px;
   translate: -1rem;
@@ -31,6 +38,10 @@ const StyledSwitch = styled.div`
   }
   &.light {
     right: 0;
+  }
+
+  svg {
+    color: ${colors.background1};
   }
 `;
 
@@ -45,7 +56,9 @@ const ThemeButton = () => {
 
   return (
     <StyledButton onClick={clickHandler}>
-      <StyledSwitch className={theme}></StyledSwitch>
+      <StyledSwitch className={theme}>
+        <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} />
+      </StyledSwitch>
     </StyledButton>
   );
 };
