@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  color: ${colors.text};
+  color: ${colors.text1};
   background-color: ${colors.background1};
 
   .col {

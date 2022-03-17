@@ -18,7 +18,7 @@ const StyledDiv = styled.div`
   font-size: 0.95rem;
   text-align: center;
   user-select: none;
-  color: ${colors.text};
+  color: ${colors.text2};
 
   border-radius: 10px;
   cursor: pointer;
@@ -30,9 +30,9 @@ const StyledDiv = styled.div`
   }
 
   &.inactive {
-    filter: brightness(1) contrast(0.7) opacity(0.8);
+    filter: brightness(1) contrast(0.8) opacity(0.8);
     background-color: ${colors.primary};
-    color: ${colors.background1};
+    color: ${colors.text2};
   }
   &.active {
     filter: brightness(1) contrast(1) opacity(1);
@@ -42,7 +42,7 @@ const StyledDiv = styled.div`
   &.disabled {
     filter: brightness(0.8) contrast(1) opacity(1);
     background-color: ${colors.accent};
-    color: ${colors.text};
+    color: ${colors.text2};
   }
 
   svg {

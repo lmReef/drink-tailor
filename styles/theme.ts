@@ -8,27 +8,31 @@ interface themes {
 export const colors: colorTheme = {
   primary: theme('mode', {
     dark: '#efefef',
-    light: '#457B9D',
+    light: '#17c3b2',
   }),
   secondary: theme('mode', {
     dark: '#8e8e8e',
-    light: '#1D3557',
+    light: '#E4E0D7',
   }),
   accent: theme('mode', {
     dark: '#E63946',
-    light: '#E63946',
+    light: '#227c9d',
   }),
   background1: theme('mode', {
     dark: '#191919',
-    light: '#F1FAEE',
+    light: '#fef9ef',
   }),
   background2: theme('mode', {
     dark: '#111111',
-    light: '#A8DADC',
+    light: '#fef9ef',
   }),
-  text: theme('mode', {
+  text1: theme('mode', {
     dark: '#8e8e8e',
     light: '#191919',
+  }),
+  text2: theme('mode', {
+    dark: 'black',
+    light: 'black',
   }),
 };
 
