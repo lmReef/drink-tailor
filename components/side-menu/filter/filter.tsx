@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import { colors } from '../../../styles/theme';
 import Tags from './tags';
 
 const StyledDiv = styled.div`
@@ -10,7 +11,7 @@ const StyledDiv = styled.div`
   display: flex;
   flex-direction: column;
 
-  background-color: ${(props) => props.theme[3]};
+  background-color: ${colors.background2};
 
   /* transform: scaleY(1); */
   transition: all 0.2s;
@@ -22,7 +23,7 @@ const StyledDiv = styled.div`
     font-size: 1.3rem;
     letter-spacing: 1px;
     font-size: 1.7rem;
-    color: ${(props) => props.theme[4]};
+    color: ${colors.accent};
   }
 
   .tags {
@@ -47,7 +48,7 @@ const Arrow = styled.div`
   transition: all 0.2s ease-out;
 
   &:hover {
-    color: ${(props) => props.theme[2]};
+    color: ${colors.secondary};
   }
 
   svg {
@@ -56,7 +57,7 @@ const Arrow = styled.div`
   }
 `;
 
-const Filter = ({ activeTags, handleTagClick, theme }) => {
+const Filter = ({ activeTags, handleTagClick }) => {
   // TODO: add all the filters
   const mixers = [
     'Soda Water',
@@ -121,31 +122,27 @@ const Filter = ({ activeTags, handleTagClick, theme }) => {
   // TODO: make sections collapsable on mobile
 
   return (
-    <StyledDiv theme={theme}>
+    <StyledDiv>
       <h2>Spirits</h2>
       <Tags
-        theme={theme}
         tags={liquors}
         activeTags={activeTags}
         handleTagClick={handleTagClick}
       />
       <h2>Liqueurs</h2>
       <Tags
-        theme={theme}
         tags={liqueurs}
         activeTags={activeTags}
         handleTagClick={handleTagClick}
       />
       <h2>Mixers</h2>
       <Tags
-        theme={theme}
         tags={mixers}
         activeTags={activeTags}
         handleTagClick={handleTagClick}
       />
       <h2>Extras</h2>
       <Tags
-        theme={theme}
         tags={others}
         activeTags={activeTags}
         handleTagClick={handleTagClick}

@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
+import { colors } from '../../../styles/theme';
 
 // TODO: make the tags look better
 const StyledDiv = styled.div`
@@ -17,7 +18,7 @@ const StyledDiv = styled.div`
   font-size: 0.95rem;
   text-align: center;
   user-select: none;
-  color: ${(props) => props.theme[2]};
+  color: ${colors.text};
 
   border-radius: 10px;
   cursor: pointer;
@@ -30,18 +31,18 @@ const StyledDiv = styled.div`
 
   &.inactive {
     filter: brightness(1) contrast(0.7) opacity(0.8);
-    background-color: ${(props) => props.theme[0]};
-    color: ${(props) => props.theme[3]};
+    background-color: ${colors.primary};
+    color: ${colors.background1};
   }
   &.active {
     filter: brightness(1) contrast(1) opacity(1);
-    background-color: ${(props) => props.theme[4]};
-    color: ${(props) => props.theme[3]};
+    background-color: ${colors.accent};
+    color: ${colors.background1};
   }
   &.disabled {
     filter: brightness(0.8) contrast(1) opacity(1);
-    background-color: ${(props) => props.theme[4]};
-    color: ${(props) => props.theme[1]};
+    background-color: ${colors.accent};
+    color: ${colors.text};
   }
 
   svg {
@@ -49,7 +50,7 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Tag = ({ name, activeTags, handleTagClick, theme }) => {
+const Tag = ({ name, activeTags, handleTagClick }) => {
   const ref = useRef(null);
   const [activeState, setActiveState] = useState('inactive');
 
@@ -65,7 +66,6 @@ const Tag = ({ name, activeTags, handleTagClick, theme }) => {
 
   return (
     <StyledDiv
-      theme={theme}
       ref={ref}
       className={`tag ${activeState}`}
       onClick={() => {
@@ -77,7 +77,7 @@ const Tag = ({ name, activeTags, handleTagClick, theme }) => {
   );
 };
 
-const Tags = ({ tags, activeTags, handleTagClick, theme }) => {
+const Tags = ({ tags, activeTags, handleTagClick }) => {
   tags.sort();
 
   return (
@@ -85,7 +85,6 @@ const Tags = ({ tags, activeTags, handleTagClick, theme }) => {
       {tags.map((tag, index) => {
         return (
           <Tag
-            theme={theme}
             key={index}
             name={tag}
             activeTags={activeTags}

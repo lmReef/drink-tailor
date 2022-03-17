@@ -1,15 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
 import styled from 'styled-components';
 import axios, { AxiosRequestConfig } from 'axios';
 import Image from 'next/image';
-import {
-  breakpoints_min,
-  breakpoints_max,
-  colors_light,
-  colors_dark,
-} from '../styles/theme';
+
 import SideMenu from '../components/side-menu/side-menu';
+import Button from '../components/common/button';
+import { colors } from '../styles/theme';
+import { changeTheme } from '../styles/themeSlice';
+import Navbar from '../components/top-bar/navbar';
 
 const Wrapper = styled.div`
   height: 100vh;
@@ -17,17 +18,21 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  color: ${(props) => props.theme[1]};
+  color: ${colors.text};
+  background-color: ${colors.background1};
+
+  .col {
+    width: 100%;
+  }
 `;
 
 const Content = styled.div`
   height: 100%;
-  width: 70%;
+  width: 100%;
   overflow-y: scroll;
 
   text-align: center;
-  background-color: ${(props) => [props.theme[2]]};
-  /* background-color: ${(props) => props.theme[0]}; */
+  background-color: ${colors.background1};
 
   .no-drinks {
     position: relative;
@@ -91,8 +96,7 @@ const getDetails = async (id) => {
 };
 
 const Index = () => {
-  // const theme = colors_light;
-  const theme = colors_dark;
+  const dispatch = useDispatch();
   const [timeoutId, setTimeoutId] = useState(null);
   const [data, setData] = useState(null);
   const [hasTags, setHasTags] = useState(false);
@@ -120,35 +124,39 @@ const Index = () => {
   };
 
   return (
-    <Wrapper theme={theme}>
-      <SideMenu theme={theme} handleTagChange={handleTagChange} />
-      <Content theme={theme} className="main-wrapper">
-        {typeof data !== 'string' && data?.length > 0 ? (
-          data?.map((drink, index) => {
-            return (
-              <div key={index} className="drink-card">
-                <img
-                  src={drink.strDrinkThumb}
-                  alt={`Image of a ${drink.strDrink}`}
-                  className="card-image"
-                />
-                <div className="col">
-                  <h3>{drink.strDrink}</h3>
-                  {/* <button className="view-details">View Details</button> */}
+    <Wrapper>
+      <SideMenu handleTagChange={handleTagChange} />
+      <div className="col">
+        <Navbar />
+
+        <Content>
+          {typeof data !== 'string' && data?.length > 0 ? (
+            data?.map((drink, index) => {
+              return (
+                <div key={index} className="drink-card">
+                  <img
+                    src={drink.strDrinkThumb}
+                    alt={`Image of a ${drink.strDrink}`}
+                    className="card-image"
+                  />
+                  <div className="col">
+                    <h3>{drink.strDrink}</h3>
+                    {/* <button className="view-details">View Details</button> */}
+                  </div>
                 </div>
-              </div>
-            );
-          })
-        ) : hasTags === false ? (
-          <h2 className="no-drinks">
-            Pick a few options on the left to get started.
-          </h2>
-        ) : (
-          <h2 className="no-drinks">
-            We dont know any drinks with that combination! Try something else.
-          </h2>
-        )}
-      </Content>
+              );
+            })
+          ) : hasTags === false ? (
+            <h2 className="no-drinks">
+              Pick a few options on the left to get started.
+            </h2>
+          ) : (
+            <h2 className="no-drinks">
+              We dont know any drinks with that combination! Try something else.
+            </h2>
+          )}
+        </Content>
+      </div>
     </Wrapper>
   );
 };

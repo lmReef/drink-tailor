@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import { breakpoints_min, breakpoints_max } from '../../styles/theme';
+import { breakpoints_min, breakpoints_max, colors } from '../../styles/theme';
 import Button from '../common/button';
 import Filter from './filter/filter';
 
@@ -11,9 +11,7 @@ const SideMenuContainer = styled.div`
 
   padding: 0.8rem;
 
-  /* border: 0 solid ${(props) => props.theme[3]};
-  border-width: 0 3px 0 0; */
-  background-color: ${(props) => props.theme[3]};
+  background-color: ${colors.background2};
 
   .button- {
     &find {
@@ -24,7 +22,7 @@ const SideMenuContainer = styled.div`
   }
 `;
 
-const SideMenu = ({ theme, handleTagChange }) => {
+const SideMenu = ({ handleTagChange }) => {
   // TODO: button to clear all activeTags
   const [activeTags, setActiveTags] = useState([]);
 
@@ -42,14 +40,10 @@ const SideMenu = ({ theme, handleTagChange }) => {
   }, [activeTags, handleTagChange]);
 
   return (
-    <SideMenuContainer theme={theme}>
-      <Filter
-        theme={theme}
-        activeTags={activeTags}
-        handleTagClick={handleTagClick}
-      />
+    <SideMenuContainer>
+      <Filter activeTags={activeTags} handleTagClick={handleTagClick} />
 
-      {/* <Button className="button-find" text="Find" theme={theme} /> */}
+      {/* <Button className="button-find" text="Find"  /> */}
     </SideMenuContainer>
   );
 };

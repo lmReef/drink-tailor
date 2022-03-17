@@ -1,8 +1,18 @@
 import { AppProps } from 'next/app';
-import '../styles/globals.css';
+import { Provider } from 'react-redux';
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+import '../styles/globals.css';
+import store from '../app/store';
+import CustomThemeProvider from '../components/custom-theme-provider';
+
+function App({ Component, pageProps }) {
+  return (
+    <Provider store={store}>
+      <CustomThemeProvider>
+        <Component {...pageProps} />
+      </CustomThemeProvider>
+    </Provider>
+  );
 }
 
-export default MyApp;
+export default App;
