@@ -14,13 +14,13 @@ const Wrapper = styled.div`
   height: 100vh;
 
   display: flex;
-  flex-direction: row;
 
   color: ${colors.text1};
   background-color: ${colors.background1};
 
-  .col {
-    width: 100%;
+  .row {
+    /* width: 100%; */
+    display: flex;
   }
 `;
 
@@ -122,39 +122,42 @@ const Index = () => {
   };
 
   return (
-    <Wrapper>
-      <div className="col">
-        <Navbar />
-        <SideMenu handleTagChange={handleTagChange} />
-        <Content>
-          {typeof data !== 'string' && data?.length > 0 ? (
-            data?.map((drink, index) => {
-              return (
-                <div key={index} className="drink-card">
-                  <img
-                    src={drink.strDrinkThumb}
-                    alt={`Image of a ${drink.strDrink}`}
-                    className="card-image"
-                  />
-                  <div className="col">
-                    <h3>{drink.strDrink}</h3>
-                    {/* <button className="view-details">View Details</button> */}
+    <>
+      <Navbar />
+      <Wrapper>
+        <div className="row">
+          <SideMenu handleTagChange={handleTagChange} />
+          <Content>
+            {typeof data !== 'string' && data?.length > 0 ? (
+              data?.map((drink, index) => {
+                return (
+                  <div key={index} className="drink-card">
+                    <img
+                      src={drink.strDrinkThumb}
+                      alt={`Image of a ${drink.strDrink}`}
+                      className="card-image"
+                    />
+                    <div className="col">
+                      <h3>{drink.strDrink}</h3>
+                      {/* <button className="view-details">View Details</button> */}
+                    </div>
                   </div>
-                </div>
-              );
-            })
-          ) : hasTags === false ? (
-            <h2 className="no-drinks">
-              Pick a few options on the left to get started.
-            </h2>
-          ) : (
-            <h2 className="no-drinks">
-              We dont know any drinks with that combination! Try something else.
-            </h2>
-          )}
-        </Content>
-      </div>
-    </Wrapper>
+                );
+              })
+            ) : hasTags === false ? (
+              <h2 className="no-drinks">
+                Pick a few options on the left to get started.
+              </h2>
+            ) : (
+              <h2 className="no-drinks">
+                We dont know any drinks with that combination! Try something
+                else.
+              </h2>
+            )}
+          </Content>
+        </div>
+      </Wrapper>
+    </>
   );
 };
 

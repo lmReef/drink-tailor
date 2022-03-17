@@ -25,6 +25,7 @@ const StyledNavbar = styled.div`
     cursor: pointer;
 
     h1 {
+      color: ${colors.text1};
       margin: auto 0;
       letter-spacing: 1px;
     }
