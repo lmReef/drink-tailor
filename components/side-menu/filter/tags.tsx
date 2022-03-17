@@ -58,12 +58,6 @@ const Tag = ({ name, activeTags, handleTagClick }) => {
     setActiveState(activeTags.includes(name) ? 'active' : 'inactive');
   }, [activeTags, name]);
 
-  // left click
-  const handleLeftClick = () => {
-    if (activeState !== 'active') setActiveState('active');
-    else setActiveState('inactive');
-  };
-
   return (
     <StyledDiv
       ref={ref}
