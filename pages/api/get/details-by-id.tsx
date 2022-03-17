@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+  // TODO: cache responses
   var id = req.query.id;
 
   var options: AxiosRequestConfig = {
