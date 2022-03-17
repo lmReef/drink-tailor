@@ -27,7 +27,7 @@ const StyledSwitch = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: ${colors.primary};
+  background-color: ${colors.accent};
   border-radius: 110px;
   translate: -1rem;
 
@@ -41,7 +41,7 @@ const StyledSwitch = styled.div`
   }
 
   svg {
-    color: ${colors.background1};
+    color: ${colors.primary};
   }
 `;
 

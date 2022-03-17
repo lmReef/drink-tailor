@@ -151,8 +151,8 @@ const Index = () => {
               </h2>
             ) : (
               <h2 className="no-drinks">
-                We dont know any drinks with that combination! Try something
-                else.
+                We dont know any drinks with that combination! Give something
+                else a try.
               </h2>
             )}
           </Content>
