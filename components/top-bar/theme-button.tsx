@@ -57,7 +57,7 @@ const ThemeButton = () => {
   return (
     <StyledButton onClick={clickHandler}>
       <StyledSwitch className={theme}>
-        <FontAwesomeIcon icon={theme === 'dark' ? faSun : faMoon} />
+        <FontAwesomeIcon icon={theme === 'dark' ? faMoon : faSun} />
       </StyledSwitch>
     </StyledButton>
   );
