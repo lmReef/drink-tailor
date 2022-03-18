@@ -8,7 +8,7 @@ const initialState: stateInterface = {
   activeTags: [],
 };
 
-export const tagsSlice = createSlice({
+export const tagSlice = createSlice({
   name: 'tags',
   initialState,
   reducers: {
@@ -26,8 +26,8 @@ export const tagsSlice = createSlice({
   },
 });
 
-export const { addTag, removeTag, clearTags } = tagsSlice.actions;
-export const selectAllTags = (state) => state.tags.activeTags;
-export const selectTag = (state, action) =>
-  state.tags.activeTags.find((tag) => tag === action.payload);
-export default tagsSlice.reducer;
+export const { addTag, removeTag, clearTags } = tagSlice.actions;
+export const selectAllTags = (state): string[] => state.tags.activeTags;
+export const selectTag = (state, name): boolean =>
+  !!state.tags.activeTags.find((tag) => tag === name) || false;
+export default tagSlice.reducer;

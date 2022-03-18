@@ -1,10 +1,10 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import tagsSlice from '../components/side-menu/filter/tagsSlice';
+import tagSlice from '../components/common/tag/tagSlice';
 import themeSlice from '../styles/themeSlice';
 
 export function makeStore() {
   return configureStore({
-    reducer: { theme: themeSlice, tags: tagsSlice },
+    reducer: { theme: themeSlice, tags: tagSlice },
   });
 }
 

@@ -17,7 +17,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { data } = await axios.request(options);
 
-  return data.drinks[0];
+  res.status(200).json(data.drinks[0]);
 };
 
 export default handler;
