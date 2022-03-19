@@ -6,7 +6,7 @@ import axios from 'axios';
 
 import { colors } from '../../styles/theme';
 import { selectAllTags } from '../common/tag/tagSlice';
-import DrinkCard from './drink-card';
+import DrinkCard from './drink-card/drink-card';
 
 const StyledContent = styled.div`
   height: 100%;
