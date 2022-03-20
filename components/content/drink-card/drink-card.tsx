@@ -30,7 +30,8 @@ const StyledDrinkCard = styled.div`
 
   .loading {
     width: 100%;
-    height: 100%;
+    height: 18rem;
+
     svg {
       font-size: 3rem;
       position: relative;
