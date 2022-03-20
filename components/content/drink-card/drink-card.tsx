@@ -13,13 +13,14 @@ interface Ingredient {
 }
 
 const StyledDrinkCard = styled.div`
-  height: 18rem;
+  height: fit-content;
+  min-height: 18rem;
   margin: 1rem;
   display: flex;
   text-align: left;
 
   .card-image {
-    height: 100%;
+    height: 18rem;
     width: auto;
     min-height: 18rem;
     min-width: 18rem;
