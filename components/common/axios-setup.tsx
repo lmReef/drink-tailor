@@ -1,16 +1,12 @@
 import { Axios } from 'axios';
 import { setup } from 'axios-cache-adapter';
-import localforage from 'localforage';
 
-const forageStore = localforage.createInstance({
-  name: 'axios-cache',
-  driver: [localforage.INDEXEDDB, localforage.LOCALSTORAGE],
-});
+// local storage:
+// https://www.npmjs.com/package/localforage
 
 const api: Axios = setup({
   cache: {
-    maxAge: 30 * 60 * 1000,
-    store: forageStore,
+    maxAge: 60 * 60 * 24 * 1000,
     exclude: {
       query: false,
     },
