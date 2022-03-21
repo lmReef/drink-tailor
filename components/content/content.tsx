@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
-
 import styled from 'styled-components';
-import axios from 'axios';
 
 import { colors } from '../../styles/theme';
 import { selectAllTags } from '../common/tag/tagSlice';
 import DrinkCard from './drink-card/drink-card';
+import api from '../common/axios-setup';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -39,7 +38,7 @@ const Content = () => {
       }
 
       const drinksRes: DrinkBasic[] = await (
-        await axios.get('/api/get/drinks-by-tags?tags=' + activeTags)
+        await api.get('/api/get/drinks-by-tags?tags=' + activeTags)
       ).data;
 
       setDrinks(drinksRes);
@@ -53,7 +52,7 @@ const Content = () => {
     <StyledContent>
       {typeof drinks !== 'string' && drinks?.length > 0 ? (
         drinks?.map((drink, index) => {
-          return <DrinkCard key={index} drink={drink} />;
+          return <DrinkCard key={index} drink={drink} api={api} />;
         })
       ) : !hasTags ? (
         <h2 className="no-drinks">

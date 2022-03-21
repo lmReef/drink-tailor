@@ -1,11 +1,14 @@
 // TODO: look into this error:
 /* eslint-disable @next/next/no-img-element */
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+
+import ReactVisibilitySensor from 'react-visibility-sensor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import ReactVisibilitySensor from 'react-visibility-sensor';
-import { useEffect, useState } from 'react';
+
 import Tag from '../../common/tag/tag';
+import { Axios } from 'axios';
 
 interface Ingredient {
   ingredient: string;
@@ -86,7 +89,7 @@ const StyledDrinkCard = styled.div`
   }
 `;
 
-const DrinkCard = ({ drink }: { drink: DrinkBasic }) => {
+const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
   const [sensorActive, setSensorActive] = useState<boolean>(true);
   const [visible, setVisible] = useState<boolean>(false);
   const [drinkDetails, setDrinkDetails] = useState<DrinkDetails>(null);
@@ -103,9 +106,9 @@ const DrinkCard = ({ drink }: { drink: DrinkBasic }) => {
   const getDrinkDetails = async () => {
     setLoading(true);
 
-    const data = await fetch(
-      '/api/get/drink-details-by-id?id=' + drink.idDrink,
-    ).then((res) => res.json());
+    const data = await (
+      await api.get('/api/get/drink-details-by-id?id=' + drink.idDrink)
+    ).data;
 
     setDrinkDetails(data);
     setIngredients(getIngredients(data));
