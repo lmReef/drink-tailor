@@ -3,9 +3,9 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   // TODO: cache responses
-  var id = req.query.id;
+  const id = req.query.id;
 
-  var options: AxiosRequestConfig = {
+  const options: AxiosRequestConfig = {
     method: 'GET',
     url: 'https://the-cocktail-db.p.rapidapi.com/lookup.php',
     params: { i: id },

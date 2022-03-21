@@ -32,7 +32,7 @@ const StyledDiv = styled.div`
   }
 
   &.inactive {
-    filter: brightness(1) contrast(0.8) opacity(0.8);
+    filter: brightness(1) contrast(0.85) opacity(0.8);
     background-color: ${colors.primary};
     color: ${colors.text2};
   }

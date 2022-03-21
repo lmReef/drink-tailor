@@ -65,6 +65,7 @@ const Filter = () => {
     'Ginger Ale',
     'Lemonade',
   ];
+  // TODO: maybe move wines to own section?
   const liquors = [
     'Gin',
     'Vodka',
@@ -76,7 +77,6 @@ const Filter = () => {
     'Bourbon',
     'Brandy',
     'Cognac',
-    'Whiskey',
     'Champagne',
     'Prosecco',
     'Red Wine',
