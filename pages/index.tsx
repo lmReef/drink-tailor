@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 import SideMenu from '../components/side-menu/side-menu';
 import { colors } from '../styles/theme';
-import Navbar from '../components/top-bar/navbar';
+import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
 
 const Wrapper = styled.div`
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
     flex-direction: row;
   }
   .col {
+    width: 100%;
     display: flex;
     flex-direction: column;
   }
@@ -31,7 +32,9 @@ const Index = () => {
       <Wrapper>
         <div className="row">
           <SideMenu />
-          <Content />
+          <div className="col">
+            <Content />
+          </div>
         </div>
       </Wrapper>
     </>
