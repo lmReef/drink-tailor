@@ -164,6 +164,9 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
             <div className="col">
               <span>
                 <h3>{drink.strDrink}</h3>
+                {drinkDetails?.strAlcoholic !== 'Alcoholic' && (
+                  <h4>Non Alcoholic</h4>
+                )}
               </span>
               <div className="card-content">
                 {drinkDetails && (
