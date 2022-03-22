@@ -12,9 +12,7 @@ export const themeSlice = createSlice({
       if (theme) state.value = theme;
       else state.value = state.value === 'dark' ? 'light' : 'dark';
 
-      if (typeof window !== 'undefined') {
-        localStorage.setItem('theme', state.value);
-      }
+      localStorage.setItem('theme', state.value);
     },
   },
 });

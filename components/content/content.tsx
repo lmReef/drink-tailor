@@ -79,11 +79,13 @@ const Content = () => {
 
   return (
     <StyledContent ref={contentRef} id="content">
-      <TopMenu />
       {typeof drinks !== 'string' && drinks?.length > 0 ? (
-        drinks?.map((drink, index) => {
-          return <DrinkCard key={index} drink={drink} api={api} />;
-        })
+        <>
+          <TopMenu />
+          {drinks?.map((drink, index) => {
+            return <DrinkCard key={index} drink={drink} api={api} />;
+          })}
+        </>
       ) : !hasTags ? (
         <h2 className="no-drinks">
           Pick a few options on the left to get started.
