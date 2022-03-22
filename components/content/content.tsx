@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 
@@ -28,6 +28,7 @@ const Content = () => {
   const activeTags: string[] = useSelector(selectAllTags);
   const [drinks, setDrinks] = useState<DrinkBasic[]>([]);
   const [hasTags, setHasTags] = useState<boolean>(false);
+  const contentRef = useRef<HTMLDivElement>();
 
   useEffect(() => {
     const handleTagsChange = async () => {
@@ -43,13 +44,15 @@ const Content = () => {
 
       setDrinks(drinksRes);
       setHasTags(true);
+
+      contentRef.current.scrollTo(0, 0);
     };
 
     handleTagsChange();
   }, [activeTags]);
 
   return (
-    <StyledContent>
+    <StyledContent ref={contentRef}>
       {typeof drinks !== 'string' && drinks?.length > 0 ? (
         drinks?.map((drink, index) => {
           return <DrinkCard key={index} drink={drink} api={api} />;
