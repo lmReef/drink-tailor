@@ -34,9 +34,7 @@ const Index = () => {
       <Wrapper>
         <div className="row">
           <SideMenu />
-          {/* <div className="col"> */}
           <Content />
-          {/* </div> */}
         </div>
       </Wrapper>
     </>

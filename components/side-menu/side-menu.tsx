@@ -29,8 +29,6 @@ const SideMenu = () => {
   return (
     <SideMenuContainer>
       <Filter />
-
-      {/* <Button className="button-find" text="Find"  /> */}
       {/* TODO: make a button to clear em all */}
     </SideMenuContainer>
   );

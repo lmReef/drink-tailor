@@ -59,10 +59,8 @@ const TopMenu = () => {
     const onScroll = () => {
       const currentScrollPos = content.scrollTop;
       if (prevScrollpos > currentScrollPos) {
-        // document.getElementById('top-menu').style.top = '0';
         setHide(false);
       } else {
-        // document.getElementById('top-menu').style.top = '-3.5rem';
         setHide(true);
       }
       prevScrollpos = currentScrollPos;

@@ -50,17 +50,11 @@ const StyledDiv = styled.div`
 
 const Tag = ({ name, icon = null }) => {
   const dispatch = useDispatch();
-  // const activeTags = useSelector(selectAllTags);
   const activeState = useSelector((state) => selectTag(state, name));
-  // const [activeState, setActiveState] = useState<boolean>(false);
 
   const handleClick = () => {
     dispatch(activeState ? removeTag(name) : addTag(name));
   };
-
-  // useEffect(() => {
-  //   dispatch(activeState ? addTag(name) : removeTag(name));
-  // }, [activeState, dispatch, name]);
 
   return (
     <StyledDiv
