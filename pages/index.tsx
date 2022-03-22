@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   background-color: ${colors.background1};
 
   .row {
+    width: 100%;
     display: flex;
     flex-direction: row;
   }
@@ -33,10 +34,9 @@ const Index = () => {
       <Wrapper>
         <div className="row">
           <SideMenu />
-          <div className="col">
-            <TopMenu />
-            <Content />
-          </div>
+          {/* <div className="col"> */}
+          <Content />
+          {/* </div> */}
         </div>
       </Wrapper>
     </>

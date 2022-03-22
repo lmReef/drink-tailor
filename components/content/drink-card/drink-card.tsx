@@ -80,8 +80,9 @@ const StyledDrinkCard = styled.div`
           .tag {
             display: inline;
             margin: auto;
-            padding: 0.2rem 0.3rem;
+            padding: 0.2rem 0.5rem;
             height: fit-content;
+            border-radius: 9001px;
           }
         }
       }

@@ -19,6 +19,10 @@ const SideMenuContainer = styled.div`
       margin: 0 auto 0 auto;
     }
   }
+
+  @media only screen and (max-width: ${breakpoints_max.lg}) {
+    display: none;
+  }
 `;
 
 const SideMenu = () => {

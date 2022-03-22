@@ -8,6 +8,7 @@ import { colors } from '../../styles/theme';
 import { selectAllTags } from '../common/tags/tagSlice';
 import DrinkCard from './drink-card/drink-card';
 import api from '../common/axios-setup';
+import TopMenu from '../top-menu/top-menu';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -16,12 +17,14 @@ const StyledContent = styled.div`
 
   text-align: center;
   background-color: ${colors.background1};
+  top: 3.5rem;
 
   .no-drinks {
     position: relative;
     width: 50%;
+    height: 8rem;
     margin: auto;
-    top: 35%;
+    top: calc(50% - 8rem);
     font-size: 3rem;
   }
 
@@ -75,7 +78,8 @@ const Content = () => {
   }, [activeTags]);
 
   return (
-    <StyledContent ref={contentRef}>
+    <StyledContent ref={contentRef} id="content">
+      <TopMenu />
       {typeof drinks !== 'string' && drinks?.length > 0 ? (
         drinks?.map((drink, index) => {
           return <DrinkCard key={index} drink={drink} api={api} />;

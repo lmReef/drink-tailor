@@ -37,16 +37,16 @@ export const colors: colorTheme = {
 };
 
 export const breakpoints_max = {
-  xs: 480,
-  sm: 768,
-  md: 1024,
-  lg: 1200,
+  xs: '480px',
+  sm: '768px',
+  md: '1024px',
+  lg: '1200px',
 };
 
 export const breakpoints_min = {
-  xs: 0,
-  sm: 481,
-  md: 769,
-  lg: 1025,
-  xl: 1201,
+  xs: '0px',
+  sm: '481px',
+  md: '769px',
+  lg: '1025px',
+  xl: '1201px',
 };

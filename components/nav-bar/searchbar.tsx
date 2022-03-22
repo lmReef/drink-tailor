@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { colors } from '../../styles/theme';
+import { breakpoints_max, colors } from '../../styles/theme';
 
 const StyledSearchbar = styled.div`
   position: relative;
@@ -34,6 +34,10 @@ const StyledSearchbar = styled.div`
     translate: -1rem -0.75rem;
     color: ${colors.text2};
     cursor: pointer;
+  }
+
+  @media only screen and (max-width: ${breakpoints_max.lg}) {
+    display: none;
   }
 `;
 
