@@ -51,7 +51,7 @@ const ThemeButton = () => {
 
   const clickHandler = () => {
     // redux state change
-    dispatch(changeTheme());
+    dispatch(changeTheme(null));
   };
 
   return (

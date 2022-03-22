@@ -5,6 +5,8 @@ import { colors } from '../styles/theme';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
 import TopMenu from '../components/top-menu/top-menu';
+import { changeTheme } from '../styles/themeSlice';
+import { useDispatch } from 'react-redux';
 
 const Wrapper = styled.div`
   /* height = 100vh - height of navbar */
@@ -28,6 +30,15 @@ const Wrapper = styled.div`
 `;
 
 const Index = () => {
+  const dispatch = useDispatch();
+
+  if (typeof window !== 'undefined') {
+    const th = localStorage.getItem('theme');
+    console.log(th);
+
+    if (th) dispatch(changeTheme(th));
+  }
+
   return (
     <>
       <Navbar />

@@ -6,8 +6,15 @@ export const themeSlice = createSlice({
     value: 'light',
   },
   reducers: {
-    changeTheme: (state) => {
-      state.value = state.value === 'dark' ? 'light' : 'dark';
+    changeTheme: (state, action) => {
+      const theme = action?.payload;
+
+      if (theme) state.value = theme;
+      else state.value = state.value === 'dark' ? 'light' : 'dark';
+
+      if (typeof window !== 'undefined') {
+        localStorage.setItem('theme', state.value);
+      }
     },
   },
 });
