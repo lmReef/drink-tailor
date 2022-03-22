@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
@@ -47,9 +48,9 @@ const StyledDiv = styled.div`
   }
 `;
 
-const Tag = ({ name }) => {
+const Tag = ({ name, icon = null }) => {
   const dispatch = useDispatch();
-  const activeTags = useSelector(selectAllTags);
+  // const activeTags = useSelector(selectAllTags);
   const activeState = useSelector((state) => selectTag(state, name));
   // const [activeState, setActiveState] = useState<boolean>(false);
 
@@ -66,6 +67,7 @@ const Tag = ({ name }) => {
       className={`tag ${activeState ? 'active' : 'inactive'}`}
       onClick={handleClick}
     >
+      {icon && <FontAwesomeIcon icon={icon} />}
       {name}
     </StyledDiv>
   );

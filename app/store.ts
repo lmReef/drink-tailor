@@ -1,5 +1,5 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import tagSlice from '../components/common/tag/tagSlice';
+import tagSlice from '../components/common/tags/tagSlice';
 import themeSlice from '../styles/themeSlice';
 
 export function makeStore() {

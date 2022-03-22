@@ -7,7 +7,7 @@ import ReactVisibilitySensor from 'react-visibility-sensor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
-import Tag from '../../common/tag/tag';
+import Tag from '../../common/tags/tag';
 import { Axios } from 'axios';
 
 interface Ingredient {

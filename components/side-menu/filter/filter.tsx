@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { colors } from '../../../styles/theme';
-import Tags from './tags';
+import Tags from '../../common/tags/tags';
 
 const StyledDiv = styled.div`
   height: 100%;

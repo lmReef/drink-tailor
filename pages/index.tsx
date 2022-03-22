@@ -4,6 +4,7 @@ import SideMenu from '../components/side-menu/side-menu';
 import { colors } from '../styles/theme';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
+import TopMenu from '../components/top-menu/top-menu';
 
 const Wrapper = styled.div`
   /* height = 100vh - height of navbar */
@@ -33,6 +34,7 @@ const Index = () => {
         <div className="row">
           <SideMenu />
           <div className="col">
+            <TopMenu />
             <Content />
           </div>
         </div>
