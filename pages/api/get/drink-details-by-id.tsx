@@ -16,7 +16,6 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   const { data } = await axios.request(options);
-  console.log('details');
 
   res.status(200).json(data.drinks[0]);
 };

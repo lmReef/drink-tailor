@@ -8,7 +8,7 @@ const StyledSearchbar = styled.div`
   display: flex;
 
   width: 30rem;
-  margin: auto 0;
+  margin: auto auto;
 
   input {
     position: relative;

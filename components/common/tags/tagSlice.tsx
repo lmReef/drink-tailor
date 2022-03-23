@@ -27,9 +27,12 @@ export const tagSlice = createSlice({
 });
 
 export const { addTag, removeTag, clearTags } = tagSlice.actions;
+
 export const selectAllTags = (state): string[] => state.tags.activeTags;
+
 export const selectTag = (state, name: string): boolean =>
   !!state.tags.activeTags.find(
     (tag: string) => tag.toLowerCase() === name.toLowerCase(),
   ) || false;
+
 export default tagSlice.reducer;

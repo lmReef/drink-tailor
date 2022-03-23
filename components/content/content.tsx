@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
@@ -9,6 +9,12 @@ import { selectAllTags } from '../common/tags/tagSlice';
 import DrinkCard from './drink-card/drink-card';
 import api from '../common/axios-setup';
 import TopMenu from '../top-menu/top-menu';
+import {
+  selectFavouritesActive,
+  selectHasFavourites,
+  setFavouritesActive,
+  toggleFavouritesActive,
+} from '../favouritesSlice';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -49,46 +55,64 @@ const StyledContent = styled.div`
 `;
 
 const Content = () => {
+  const dispatch = useDispatch();
   const activeTags: string[] = useSelector(selectAllTags);
+  const favouritesActive = useSelector(selectFavouritesActive);
+  const hasFavourites = useSelector(selectHasFavourites);
   const [drinks, setDrinks] = useState<DrinkBasic[]>([]);
-  const [hasTags, setHasTags] = useState<boolean>(false);
+  // const [hasTags, setHasTags] = useState<boolean>(false);
+  const hasTags = activeTags.length > 0;
   const contentRef = useRef<HTMLDivElement>();
 
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
 
   useEffect(() => {
-    const handleTagsChange = async () => {
-      if (activeTags.length === 0) {
-        setDrinks([]);
-        setHasTags(false);
-        return;
-      }
+    if (!favouritesActive) {
+      const handleTagsChange = async () => {
+        if (activeTags.length === 0) {
+          setDrinks([]);
+          // setHasTags(false);
+          return;
+        }
 
-      const drinksRes: DrinkBasic[] = await (
-        await api.get('/api/get/drinks-by-tags?tags=' + activeTags)
-      ).data;
+        const drinksRes: DrinkBasic[] = await (
+          await api.get('/api/get/drinks-by-tags?tags=' + activeTags)
+        ).data;
 
-      setDrinks(drinksRes);
-      setHasTags(true);
+        setDrinks(drinksRes);
+        // setHasTags(true);
 
-      scrollToTop();
-    };
+        scrollToTop();
+      };
 
-    handleTagsChange();
-  }, [activeTags]);
+      handleTagsChange();
+    }
+  }, [activeTags, favouritesActive]);
+
+  useEffect(() => {
+    if (favouritesActive) {
+      const favouriteDrinks = JSON.parse(localStorage.getItem('favourites'));
+      setDrinks(favouriteDrinks);
+    }
+  }, [favouritesActive]);
 
   return (
     <StyledContent ref={contentRef} id="content">
       {typeof drinks !== 'string' && drinks?.length > 0 ? (
         <>
-          <TopMenu />
+          {hasTags && <TopMenu />}
           {drinks?.map((drink, index) => {
             return <DrinkCard key={index} drink={drink} api={api} />;
           })}
         </>
-      ) : !hasTags ? (
+      ) : !hasTags && !favouritesActive ? (
         <h2 className="no-drinks">
           Pick a few options on the left to get started.
+        </h2>
+      ) : !hasFavourites && favouritesActive ? (
+        <h2 className="no-drinks">
+          It looks like you dont have any favourites yet. Add a few to see them
+          here.
         </h2>
       ) : (
         <h2 className="no-drinks">

@@ -11,7 +11,7 @@ const StyledButton = styled.div`
   width: 4rem;
   height: 2rem;
 
-  margin: auto 1rem auto auto;
+  margin: auto 1rem;
 
   background-color: ${colors.secondary};
   border-radius: 110px;
@@ -19,7 +19,7 @@ const StyledButton = styled.div`
 `;
 
 const StyledSwitch = styled.div`
-  position: absolute;
+  position: relative;
   width: 2rem;
   height: 2rem;
 
@@ -29,12 +29,11 @@ const StyledSwitch = styled.div`
 
   background-color: ${colors.accent};
   border-radius: 110px;
-  translate: -1rem;
 
   transition: right 0.1s ease-in-out;
 
   &.dark {
-    right: 2rem;
+    right: -2rem;
   }
   &.light {
     right: 0;

@@ -1,10 +1,11 @@
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
-import styled from 'styled-components';
 
 import { breakpoints_max, colors } from '../../styles/theme';
 import Searchbar from './searchbar';
 import ThemeButton from './theme-button';
+import FavouritesButton from './favourites-button';
 
 const StyledNavbar = styled.div`
   height: 4rem;
@@ -20,20 +21,20 @@ const StyledNavbar = styled.div`
     position: relative;
     display: flex;
     height: 100%;
-    margin: auto auto auto 1rem;
+    margin: auto 1rem auto 1rem;
 
     cursor: pointer;
+
+    svg.header-icon {
+      height: 2rem;
+      margin: 1rem;
+      color: ${colors.accent};
+    }
 
     h1 {
       color: ${colors.text1};
       margin: auto 0;
       letter-spacing: 1px;
-    }
-
-    svg {
-      height: 2rem;
-      margin: 1rem;
-      color: ${colors.accent};
     }
   }
 `;
@@ -42,10 +43,11 @@ const Navbar = () => {
   return (
     <StyledNavbar>
       <div className="nav-header">
-        <FontAwesomeIcon icon={faMartiniGlassCitrus} />
+        <FontAwesomeIcon icon={faMartiniGlassCitrus} className="header-icon" />
         <h1>Drink Tailor</h1>
       </div>
       <Searchbar />
+      <FavouritesButton />
       <ThemeButton />
     </StyledNavbar>
   );

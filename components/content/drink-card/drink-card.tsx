@@ -9,6 +9,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import Tag from '../../common/tags/tag';
 import { Axios } from 'axios';
+import FavouritesButton from './favourites-button';
 
 interface Ingredient {
   ingredient: string;
@@ -164,7 +165,10 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
             />
             <div className="col">
               <span>
-                <h3>{drink.strDrink}</h3>
+                <div className="row">
+                  <h3>{drink.strDrink}</h3>
+                  <FavouritesButton drink={drink} />
+                </div>
                 {drinkDetails?.strAlcoholic !== 'Alcoholic' && (
                   <h4>Non Alcoholic</h4>
                 )}

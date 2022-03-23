@@ -4,9 +4,9 @@ import SideMenu from '../components/side-menu/side-menu';
 import { colors } from '../styles/theme';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
-import TopMenu from '../components/top-menu/top-menu';
 import { changeTheme } from '../styles/themeSlice';
 import { useDispatch } from 'react-redux';
+import { setFavouriteDrinks } from '../components/favouritesSlice';
 
 const Wrapper = styled.div`
   /* height = 100vh - height of navbar */
@@ -32,11 +32,13 @@ const Wrapper = styled.div`
 const Index = () => {
   const dispatch = useDispatch();
 
+  // set redux state
   if (typeof window !== 'undefined') {
-    const th = localStorage.getItem('theme');
-    console.log(th);
+    const theme = localStorage.getItem('theme');
+    const favourites = JSON.parse(localStorage.getItem('favourites'));
 
-    if (th) dispatch(changeTheme(th));
+    if (theme) dispatch(changeTheme(theme));
+    if (favourites) dispatch(setFavouriteDrinks(favourites));
   }
 
   return (
