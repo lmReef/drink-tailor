@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
@@ -12,8 +12,6 @@ import TopMenu from '../top-menu/top-menu';
 import {
   selectFavouritesActive,
   selectHasFavourites,
-  setFavouritesActive,
-  toggleFavouritesActive,
 } from '../favouritesSlice';
 
 const StyledContent = styled.div`
@@ -55,14 +53,12 @@ const StyledContent = styled.div`
 `;
 
 const Content = () => {
-  const dispatch = useDispatch();
   const activeTags: string[] = useSelector(selectAllTags);
   const favouritesActive = useSelector(selectFavouritesActive);
   const hasFavourites = useSelector(selectHasFavourites);
   const [drinks, setDrinks] = useState<DrinkBasic[]>([]);
-  // const [hasTags, setHasTags] = useState<boolean>(false);
-  const hasTags = activeTags.length > 0;
   const contentRef = useRef<HTMLDivElement>();
+  const hasTags = activeTags.length > 0;
 
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
 
@@ -71,7 +67,6 @@ const Content = () => {
       const handleTagsChange = async () => {
         if (activeTags.length === 0) {
           setDrinks([]);
-          // setHasTags(false);
           return;
         }
 
@@ -80,8 +75,6 @@ const Content = () => {
         ).data;
 
         setDrinks(drinksRes);
-        // setHasTags(true);
-
         scrollToTop();
       };
 
@@ -98,7 +91,7 @@ const Content = () => {
 
   return (
     <StyledContent ref={contentRef} id="content">
-      {typeof drinks !== 'string' && drinks?.length > 0 ? (
+      {drinks?.length > 0 ? (
         <>
           {hasTags && <TopMenu />}
           {drinks?.map((drink, index) => {
@@ -114,11 +107,13 @@ const Content = () => {
           It looks like you dont have any favourites yet. Add a few to see them
           here.
         </h2>
-      ) : (
+      ) : !hasTags ? (
         <h2 className="no-drinks">
           We dont know any drinks with that combination! Give something else a
           try.
         </h2>
+      ) : (
+        <></>
       )}
       {hasTags && (
         <div className="scroll-to-top" onClick={scrollToTop}>
