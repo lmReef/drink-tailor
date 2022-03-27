@@ -9,29 +9,29 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^6.1.0",
-    "@fortawesome/free-regular-svg-icons": "^6.1.0",
-    "@fortawesome/free-solid-svg-icons": "^6.1.0",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-regular-svg-icons": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
     "@reduxjs/toolkit": "^1.8.0",
     "axios": "^0.25.0",
     "axios-cache-adapter": "^2.7.3",
     "babel-preset-next": "^1.4.0",
-    "next": "^12.1.0",
+    "next": "^12.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-redux": "^7.2.6",
     "react-visibility-sensor": "^5.1.1",
-    "styled-components": "^5.3.1",
+    "styled-components": "^5.3.5",
     "styled-theming": "^2.2.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.21",
-    "@types/react": "^17.0.40",
+    "@types/node": "^17.0.23",
+    "@types/react": "^17.0.43",
     "@types/styled-components": "^5.1.24",
     "babel-plugin-styled-components": "^2.0.2",
-    "eslint": "^8.7.0",
-    "eslint-config-next": "^12.0.8",
-    "typescript": "^4.6.2"
+    "eslint": "^8.12.0",
+    "eslint-config-next": "^12.1.1",
+    "typescript": "^4.6.3"
   }
 }
