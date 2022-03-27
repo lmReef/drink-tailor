@@ -8,7 +8,6 @@ phases:
     commands:
       - echo Running npm ci...
       - npm ci
-      - tsc -p tsconfig.json
   build:
     commands:
       - echo Build started on `date`
