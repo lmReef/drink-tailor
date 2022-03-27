@@ -19,5 +19,6 @@ artifacts:
   files:
     - .next/**/*
     - package.json
+    - package-lock.json
     - next.config.js
     - .npmrc

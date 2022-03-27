@@ -1,1 +1,1 @@
-web: npm run deploy-production
+web: ls && npm run deploy-production
