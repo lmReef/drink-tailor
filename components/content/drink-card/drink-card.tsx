@@ -105,18 +105,6 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
     } else setVisible(false);
   };
 
-  const getDrinkDetails = async () => {
-    setLoading(true);
-
-    const data = await (
-      await api.get('/api/get/drink-details-by-id?id=' + drink.idDrink)
-    ).data;
-
-    setDrinkDetails(data);
-    setIngredients(getIngredients(data));
-    setLoading(false);
-  };
-
   const getIngredients = (data) => {
     let ingredients: Ingredient[] = [];
 
@@ -138,10 +126,23 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
   }, [drink]);
 
   useEffect(() => {
+    const getDrinkDetails = async () => {
+      setLoading(true);
+
+      const data = await (
+        await api.get('/api/get/drink-details-by-id?id=' + drink.idDrink)
+      ).data;
+
+      setDrinkDetails(data);
+      setIngredients(getIngredients(data));
+      setLoading(false);
+    };
+
     if (visible && sensorActive) {
       getDrinkDetails();
       setSensorActive(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [drink, visible, sensorActive]);
 
   return (

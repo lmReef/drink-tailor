@@ -63,6 +63,7 @@ const Searchbar = () => {
     input.current.addEventListener('keyup', ({ key }) => {
       if (key === 'Enter') searchForDrink(input.current.value);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
 
   return (
