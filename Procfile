@@ -1,1 +1,1 @@
-web: ls && cd .next && ls && npm run deploy-production
+web: npm run deploy-production
