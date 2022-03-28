@@ -55,7 +55,7 @@ const StyledContent = styled.div`
 
 const Content = () => {
   const dispatch = useDispatch();
-  const activeTags: string[] = useSelector(selectAllTags);
+  const activeTags = useSelector(selectAllTags);
   const favouritesActive = useSelector(selectFavouritesActive);
   const hasFavourites = useSelector(selectHasFavourites);
   const drinks = useSelector(selectAllDrinks);
@@ -93,7 +93,7 @@ const Content = () => {
 
   return (
     <StyledContent ref={contentRef} id="content">
-      {drinks?.length > 0 ? (
+      {drinks?.length > 0 && typeof drinks !== 'string' ? (
         <>
           {hasTags && <TopMenu />}
           {drinks?.map((drink, index) => {
@@ -109,7 +109,7 @@ const Content = () => {
           It looks like you dont have any favourites yet. Add a few to see them
           here.
         </h2>
-      ) : !hasTags ? (
+      ) : hasTags ? (
         <h2 className="no-drinks">
           We dont know any drinks with that combination! Give something else a
           try.
