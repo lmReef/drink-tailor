@@ -109,7 +109,7 @@ const Content = () => {
           It looks like you dont have any favourites yet. Add a few to see them
           here.
         </h2>
-      ) : hasTags ? (
+      ) : hasTags && drinks.length < 0 ? (
         <h2 className="no-drinks">
           We dont know any drinks with that combination! Give something else a
           try.
