@@ -2,10 +2,16 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import tagSlice from '../components/common/tags/tagSlice';
 import favouritesSlice from '../components/favouritesSlice';
 import themeSlice from '../styles/themeSlice';
+import drinksSlice from '../components/content/drinksSlice';
 
 export function makeStore() {
   return configureStore({
-    reducer: { theme: themeSlice, tags: tagSlice, favs: favouritesSlice },
+    reducer: {
+      theme: themeSlice,
+      tags: tagSlice,
+      favs: favouritesSlice,
+      drinks: drinksSlice,
+    },
   });
 }
 

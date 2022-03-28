@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
@@ -13,6 +13,7 @@ import {
   selectFavouritesActive,
   selectHasFavourites,
 } from '../favouritesSlice';
+import { clearDrinks, selectAllDrinks, setDrinks } from './drinksSlice';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -53,10 +54,11 @@ const StyledContent = styled.div`
 `;
 
 const Content = () => {
+  const dispatch = useDispatch();
   const activeTags: string[] = useSelector(selectAllTags);
   const favouritesActive = useSelector(selectFavouritesActive);
   const hasFavourites = useSelector(selectHasFavourites);
-  const [drinks, setDrinks] = useState<DrinkBasic[]>([]);
+  const drinks = useSelector(selectAllDrinks);
   const contentRef = useRef<HTMLDivElement>();
   const hasTags = activeTags.length > 0;
 
@@ -66,7 +68,7 @@ const Content = () => {
     if (!favouritesActive) {
       const handleTagsChange = async () => {
         if (activeTags.length === 0) {
-          setDrinks([]);
+          dispatch(clearDrinks());
           return;
         }
 
@@ -74,20 +76,20 @@ const Content = () => {
           await api.get('/api/get/drinks-by-tags?tags=' + activeTags)
         ).data;
 
-        setDrinks(drinksRes);
+        dispatch(setDrinks(drinksRes));
         scrollToTop();
       };
 
       handleTagsChange();
     }
-  }, [activeTags, favouritesActive]);
+  }, [activeTags, favouritesActive, dispatch]);
 
   useEffect(() => {
     if (favouritesActive) {
       const favouriteDrinks = JSON.parse(localStorage.getItem('favourites'));
-      setDrinks(favouriteDrinks);
+      dispatch(setDrinks(favouriteDrinks));
     }
-  }, [favouritesActive]);
+  }, [favouritesActive, dispatch]);
 
   return (
     <StyledContent ref={contentRef} id="content">

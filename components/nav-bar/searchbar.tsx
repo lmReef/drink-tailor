@@ -2,6 +2,10 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { breakpoints_max, colors } from '../../styles/theme';
+import { useEffect, useRef, useState } from 'react';
+import api from '../common/axios-setup';
+import { useDispatch } from 'react-redux';
+import { clearDrinks, setDrinks } from '../content/drinksSlice';
 
 const StyledSearchbar = styled.div`
   position: relative;
@@ -42,9 +46,52 @@ const StyledSearchbar = styled.div`
 `;
 
 const Searchbar = () => {
+  const dispatch = useDispatch();
+  const [timeoutID, setTimeoutID] =
+    useState<ReturnType<typeof setTimeout>>(null);
+  const input = useRef<HTMLInputElement>();
+
+  const searchForDrink = async (name) => {
+    const drinksRes: DrinkBasic[] = await (
+      await api.get('/api/get/drinks-by-name?name=' + name)
+    ).data;
+    dispatch(setDrinks(drinksRes));
+  };
+
+  const handleChange = () => {
+    if (typeof input?.current !== 'undefined') {
+      const text = input.current.value || '';
+
+      if (text) {
+        if (timeoutID) clearTimeout(timeoutID);
+        setTimeoutID(
+          setTimeout(() => {
+            searchForDrink(text);
+            setTimeoutID(null);
+          }, 1000),
+        );
+      } else {
+        dispatch(clearDrinks());
+      }
+    }
+  };
+
+  useEffect(() => {
+    input.current.addEventListener('keyup', ({ key }) => {
+      if (key === 'Enter') {
+        // Do work
+      }
+    });
+  }, [input]);
+
   return (
     <StyledSearchbar>
-      <input type="text" placeholder="Search for a drink or ingredient..." />
+      <input
+        type="text"
+        placeholder="Search for a drink..."
+        ref={input}
+        onChange={handleChange}
+      />
       <FontAwesomeIcon icon={faSearch} />
     </StyledSearchbar>
   );
