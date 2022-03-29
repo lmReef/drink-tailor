@@ -119,6 +119,10 @@ const Content = () => {
           We dont know any drinks with that combination! Give something else a
           try.
         </h2>
+      ) : router.pathname.includes('/search') ? (
+        <h2 className="no-drinks">
+          We dont know any drinks by that name! Give something else a try.
+        </h2>
       ) : (
         <></>
       )}
