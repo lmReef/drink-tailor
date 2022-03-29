@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { colors } from '../../../styles/theme';
-import Tags from '../../common/tags/tags';
+import { colors } from '../../styles/theme';
+import Tags from '../common/tags/tags';
 
 const StyledDiv = styled.div`
   height: 100%;
@@ -129,6 +129,7 @@ const Filter = () => {
       <Tags tags={mixers} />
       <h2>Extras</h2>
       <Tags tags={others} />
+      {/* TODO: make a button to clear em all */}
     </StyledDiv>
   );
 };

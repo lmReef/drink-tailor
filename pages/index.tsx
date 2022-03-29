@@ -1,12 +1,12 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-
 import SideMenu from '../components/side-menu/side-menu';
-import { colors } from '../styles/theme';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
-import { changeTheme } from '../styles/themeSlice';
-import { useDispatch } from 'react-redux';
 import { setFavouriteDrinks } from '../components/favouritesSlice';
+import { colors } from '../styles/theme';
+import { changeTheme } from '../styles/themeSlice';
 
 const Wrapper = styled.div`
   /* height = 100vh - height of navbar */
@@ -31,6 +31,7 @@ const Wrapper = styled.div`
 
 const Index = () => {
   const dispatch = useDispatch();
+  const [sideMenuHidden, setSideMenuHidden] = useState<boolean>(false);
 
   // set redux state
   if (typeof window !== 'undefined') {
@@ -41,12 +42,18 @@ const Index = () => {
     if (favourites) dispatch(setFavouriteDrinks(favourites));
   }
 
+  const handleSideMenuClose = () => {
+    setSideMenuHidden(true);
+  };
+
   return (
     <>
       <Navbar />
       <Wrapper>
         <div className="row">
-          <SideMenu />
+          {sideMenuHidden && (
+            <SideMenu hidden={sideMenuHidden} handler={handleSideMenuClose} />
+          )}
           <Content />
         </div>
       </Wrapper>
