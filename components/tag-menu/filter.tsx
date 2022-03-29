@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { colors } from '../../styles/theme';
 import Tags from '../common/tags/tags';
+import tagsList from './tags-list';
 
 const StyledDiv = styled.div`
   height: 100%;
@@ -57,78 +58,22 @@ const Arrow = styled.div`
 
 const Filter = () => {
   // TODO: add all the filters
-  const mixers = [
-    'Soda Water',
-    'Tonic Water',
-    'Cranberry Juice',
-    'Orange Juice',
-    'Ginger Ale',
-    'Lemonade',
-  ];
+
   // TODO: maybe move wines to own section?
-  const liquors = [
-    'Gin',
-    'Vodka',
-    'Rum',
-    'Dark Rum',
-    'Light Rum',
-    'Scotch',
-    'Tequila',
-    'Bourbon',
-    'Brandy',
-    'Cognac',
-    'Champagne',
-    'Prosecco',
-    'Red Wine',
-    '151 Proof Rum',
-  ];
-  const liqueurs = [
-    'Triple Sec',
-    'Blue Curacao',
-    'Malibu Rum',
-    'Aperol',
-    'Sambuca',
-    'Campari',
-    'Dry Vermouth',
-    'Sweet Vermouth',
-    'Galliano',
-    'Green Chartreuse',
-    'Absinthe',
-    'Jagermeister',
-    'Kahlua',
-  ];
-  const others = [
-    'Bitters',
-    'Grenadine',
-    'Cream',
-    'Lemon Juice',
-    'Lemon',
-    'Orange',
-    'Lime',
-    'Lime Juice',
-    'Egg White',
-    'Egg',
-    'Honey',
-    'Maraschino Cherry',
-    'Mint',
-    'Pineapple',
-    'Sugar',
-    'Elderflower cordial',
-  ];
 
   // TODO: add custom ingredient search input?
   // TODO: make sections collapsable on mobile
 
   return (
     <StyledDiv>
-      <h2>Spirits</h2>
-      <Tags tags={liquors} />
-      <h2>Liqueurs</h2>
-      <Tags tags={liqueurs} />
-      <h2>Mixers</h2>
-      <Tags tags={mixers} />
-      <h2>Extras</h2>
-      <Tags tags={others} />
+      {Object.keys(tagsList).map((key, index) => {
+        return (
+          <>
+            <h2>{key}</h2>
+            <Tags tags={tagsList[key]} />
+          </>
+        );
+      })}
       {/* TODO: make a button to clear em all */}
     </StyledDiv>
   );
