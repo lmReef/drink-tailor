@@ -51,9 +51,8 @@ const Index = () => {
       <Navbar />
       <Wrapper>
         <div className="row">
-          {sideMenuHidden && (
-            <SideMenu hidden={sideMenuHidden} handler={handleSideMenuClose} />
-          )}
+          <SideMenu hidden={sideMenuHidden} handler={handleSideMenuClose} />
+
           <Content />
         </div>
       </Wrapper>
