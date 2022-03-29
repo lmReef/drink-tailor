@@ -120,7 +120,7 @@ const Content = () => {
       ) : (
         <></>
       )}
-      {hasTags && (
+      {(hasTags || router.pathname !== '/tags') && (
         <div className="scroll-to-top" onClick={scrollToTop}>
           <FontAwesomeIcon icon={faChevronCircleUp} />
         </div>
