@@ -42,7 +42,7 @@ const StyledNavbar = styled.div`
 const Navbar = () => {
   return (
     <StyledNavbar>
-      <div className="nav-header">
+      <div className="nav-header" onClick={() => (window.location.href = '/')}>
         <FontAwesomeIcon icon={faMartiniGlassCitrus} className="header-icon" />
         <h1>Drink Tailor</h1>
       </div>
