@@ -9,6 +9,7 @@ const api: Axios = setup({
     maxAge: 60 * 60 * 24 * 1000,
     exclude: {
       query: false,
+      paths: [/\/api\/get\/random-drinks/],
     },
   },
 });

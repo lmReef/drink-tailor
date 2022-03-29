@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import TagMenu from '../components/tag-menu/tag-menu';
 import Navbar from '../components/nav-bar/navbar';
@@ -12,18 +12,20 @@ const Index = () => {
   const dispatch = useDispatch();
   const [sideMenuHidden, setSideMenuHidden] = useState<boolean>(false);
 
-  // set redux state
-  if (typeof window !== 'undefined') {
-    const theme = localStorage.getItem('theme');
-    const favourites = JSON.parse(localStorage.getItem('favourites'));
-
-    if (theme) dispatch(changeTheme(theme));
-    if (favourites) dispatch(setFavouriteDrinks(favourites));
-  }
-
   const handleSideMenuClose = () => {
     setSideMenuHidden(true);
   };
+
+  useEffect(() => {
+    // set redux state
+    if (typeof window !== 'undefined') {
+      const theme = localStorage.getItem('theme');
+      const favourites = JSON.parse(localStorage.getItem('favourites'));
+
+      if (theme) dispatch(changeTheme(theme));
+      if (favourites) dispatch(setFavouriteDrinks(favourites));
+    }
+  }, [dispatch]);
 
   return (
     <>

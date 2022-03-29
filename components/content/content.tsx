@@ -9,10 +9,6 @@ import { selectAllTags } from '../common/tags/tagSlice';
 import DrinkCard from './drink-card/drink-card';
 import api from '../common/axios-setup';
 import TopMenu from '../top-menu/top-menu';
-import {
-  selectFavouritesActive,
-  selectHasFavourites,
-} from '../favouritesSlice';
 import { clearDrinks, selectAllDrinks, setDrinks } from './drinksSlice';
 import { useRouter } from 'next/router';
 
@@ -24,6 +20,12 @@ const StyledContent = styled.div`
   text-align: center;
   background-color: ${colors.background1};
   top: 3.5rem;
+
+  .drink-card-wrapper {
+    &.add-margin {
+      margin: 0 10rem;
+    }
+  }
 
   .no-drinks {
     position: relative;
@@ -64,8 +66,10 @@ const Content = () => {
 
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
 
+  // handler for when the tags are changed via any method
   useEffect(() => {
-    if (router.pathname !== '/favourites') {
+    // only handle changing tags if we on the tags page
+    if (router.pathname === '/tags') {
       const handleTagsChange = async () => {
         if (activeTags.length === 0) {
           dispatch(clearDrinks());
@@ -84,16 +88,20 @@ const Content = () => {
     }
   }, [activeTags, dispatch, router.pathname]);
 
-  console.log(drinks);
-
   return (
     <StyledContent ref={contentRef} id="content">
       {drinks?.length > 0 && typeof drinks !== 'string' ? (
         <>
           {hasTags && <TopMenu />}
-          {drinks?.map((drink, index) => {
-            return <DrinkCard key={index} drink={drink} api={api} />;
-          })}
+          <div
+            className={`drink-card-wrapper ${
+              router.pathname !== '/tags' && 'add-margin'
+            }`}
+          >
+            {drinks?.map((drink, index) => {
+              return <DrinkCard key={index} drink={drink} api={api} />;
+            })}
+          </div>
         </>
       ) : router.pathname === '/favourites' ? (
         <h2 className="no-drinks">
