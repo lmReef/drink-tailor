@@ -38,7 +38,7 @@ declare type ListType = 'popular' | 'latest' | 'random';
 
 const Index = () => {
   const dispatch = useDispatch();
-  const [listType, setListType] = useState<ListType>('random');
+  const [listType, setListType] = useState<ListType>('popular');
 
   const getDrinks = async () => {
     if (listType === 'popular') {
