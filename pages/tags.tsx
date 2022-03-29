@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import TagMenu from '../components/tag-menu/tag-menu';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
 import { setFavouriteDrinks } from '../components/favouritesSlice';
@@ -28,9 +29,9 @@ const Index = () => {
     <>
       <Navbar />
       <div className="main-wrapper">
+        <SideMenu />
         <div className="row">
-          {/* <TagMenu hidden={sideMenuHidden} handler={handleSideMenuClose} /> */}
-          <SideMenu />
+          <TagMenu hidden={sideMenuHidden} handler={handleSideMenuClose} />
           <Content />
         </div>
       </div>

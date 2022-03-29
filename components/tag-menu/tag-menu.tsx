@@ -9,14 +9,14 @@ const SideMenuContainer = styled.div`
   width: 30%;
   min-width: 30rem;
   position: relative;
-  left: 0;
+  /* left: 0; */
 
   padding: 0.8rem;
   background-color: ${colors.background2};
 
-  transition: left 0.2s ease-in-out;
+  /* transition: left 0.2s ease-in-out; */
 
-  .close-side-menu-button {
+  /* .close-side-menu-button {
     width: fit-content;
     height: fit-content;
     padding: 0.3rem 0.5rem;
@@ -30,11 +30,11 @@ const SideMenuContainer = styled.div`
     svg {
       font-size: 1.5rem;
     }
-  }
+  } */
 
-  &.side-menu-hidden {
+  /* &.side-menu-hidden {
     left: -40%;
-  }
+  } */
 
   @media only screen and (max-width: ${breakpoints_max.lg}) {
     display: none;
@@ -44,9 +44,9 @@ const SideMenuContainer = styled.div`
 const TagMenu = ({ hidden, handler }) => {
   return (
     <SideMenuContainer className={hidden && 'side-menu-hidden'}>
-      <div className="close-side-menu-button" onClick={handler}>
+      {/* <div className="close-side-menu-button" onClick={handler}>
         <FontAwesomeIcon icon={faTimes} />
-      </div>
+      </div> */}
       <Filter />
     </SideMenuContainer>
   );

@@ -5,7 +5,6 @@ import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 import { breakpoints_max, colors } from '../../styles/theme';
 import Searchbar from './searchbar';
 import ThemeButton from './theme-button';
-import FavouritesButton from './favourites-button';
 
 const StyledNavbar = styled.div`
   height: 4rem;
@@ -47,7 +46,6 @@ const Navbar = () => {
         <h1>Drink Tailor</h1>
       </div>
       <Searchbar />
-      <FavouritesButton />
       <ThemeButton />
     </StyledNavbar>
   );

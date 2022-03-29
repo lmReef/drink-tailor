@@ -14,6 +14,7 @@ import {
   selectHasFavourites,
 } from '../favouritesSlice';
 import { clearDrinks, selectAllDrinks, setDrinks } from './drinksSlice';
+import { useRouter } from 'next/router';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -55,9 +56,8 @@ const StyledContent = styled.div`
 
 const Content = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const activeTags = useSelector(selectAllTags);
-  const favouritesActive = useSelector(selectFavouritesActive);
-  const hasFavourites = useSelector(selectHasFavourites);
   const drinks = useSelector(selectAllDrinks);
   const contentRef = useRef<HTMLDivElement>();
   const hasTags = activeTags.length > 0;
@@ -65,7 +65,7 @@ const Content = () => {
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
 
   useEffect(() => {
-    if (!favouritesActive) {
+    if (router.pathname !== '/favourites') {
       const handleTagsChange = async () => {
         if (activeTags.length === 0) {
           dispatch(clearDrinks());
@@ -82,14 +82,9 @@ const Content = () => {
 
       handleTagsChange();
     }
-  }, [activeTags, favouritesActive, dispatch]);
+  }, [activeTags, dispatch, router.pathname]);
 
-  useEffect(() => {
-    if (favouritesActive) {
-      const favouriteDrinks = JSON.parse(localStorage.getItem('favourites'));
-      dispatch(setDrinks(favouriteDrinks));
-    }
-  }, [favouritesActive, dispatch]);
+  console.log(drinks);
 
   return (
     <StyledContent ref={contentRef} id="content">
@@ -100,14 +95,14 @@ const Content = () => {
             return <DrinkCard key={index} drink={drink} api={api} />;
           })}
         </>
-      ) : !hasTags && !favouritesActive ? (
-        <h2 className="no-drinks">
-          Pick a few options on the left to get started.
-        </h2>
-      ) : !hasFavourites && favouritesActive ? (
+      ) : router.pathname === '/favourites' ? (
         <h2 className="no-drinks">
           It looks like you dont have any favourites yet. Add a few to see them
           here.
+        </h2>
+      ) : !hasTags ? (
+        <h2 className="no-drinks">
+          Pick a few options on the left to get started.
         </h2>
       ) : hasTags && drinks.length < 0 ? (
         <h2 className="no-drinks">

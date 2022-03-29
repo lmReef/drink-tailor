@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
+import TagMenu from '../components/tag-menu/tag-menu';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
 import { setFavouriteDrinks } from '../components/favouritesSlice';
-import { colors } from '../styles/theme';
 import { changeTheme } from '../styles/themeSlice';
 import SideMenu from '../components/side-menu/side-menu';
+import { setDrinks } from '../components/content/drinksSlice';
+import { clearTags } from '../components/common/tags/tagSlice';
 
 const Index = () => {
   const dispatch = useDispatch();
@@ -20,16 +22,17 @@ const Index = () => {
     if (favourites) dispatch(setFavouriteDrinks(favourites));
   }
 
-  const handleSideMenuClose = () => {
-    setSideMenuHidden(true);
-  };
+  useEffect(() => {
+    dispatch(clearTags());
+    const favouriteDrinks = JSON.parse(localStorage.getItem('favourites'));
+    dispatch(setDrinks(favouriteDrinks));
+  }, [dispatch]);
 
   return (
     <>
       <Navbar />
       <div className="main-wrapper">
         <div className="row">
-          {/* <TagMenu hidden={sideMenuHidden} handler={handleSideMenuClose} /> */}
           <SideMenu />
           <Content />
         </div>
