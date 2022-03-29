@@ -2,11 +2,9 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { breakpoints_max, colors } from '../../styles/theme';
-import { useEffect, useRef, useState } from 'react';
-import api from '../common/axios-setup';
+import { useEffect, useRef } from 'react';
 import { useDispatch } from 'react-redux';
-import { clearDrinks, setDrinks } from '../content/drinksSlice';
-import { clearTags } from '../common/tags/tagSlice';
+import { useRouter } from 'next/router';
 
 const StyledSearchbar = styled.div`
   position: relative;
@@ -47,20 +45,19 @@ const StyledSearchbar = styled.div`
 `;
 
 const Searchbar = () => {
-  const dispatch = useDispatch();
+  const router = useRouter();
   const input = useRef<HTMLInputElement>();
 
-  const searchForDrink = async (name) => {
-    if (name) {
-      const drinksRes: DrinkBasic[] = await (
-        await api.get('/api/get/drinks-by-name?name=' + name)
-      ).data;
-      dispatch(setDrinks(drinksRes));
-    }
+  const searchForDrink = (name) => {
+    router.push(`/search?name=${name}`);
   };
 
   useEffect(() => {
     input.current.addEventListener('keyup', ({ key }) => {
+      if (key === 'Enter') searchForDrink(input.current.value);
+    });
+
+    return input.current.removeEventListener('keyup', ({ key }) => {
       if (key === 'Enter') searchForDrink(input.current.value);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
