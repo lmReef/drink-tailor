@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
-import SideMenu from '../components/side-menu/side-menu';
+import TagMenu from '../components/tag-menu/tag-menu';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
 import { setFavouriteDrinks } from '../components/favouritesSlice';
@@ -51,8 +51,7 @@ const Index = () => {
       <Navbar />
       <Wrapper>
         <div className="row">
-          <SideMenu hidden={sideMenuHidden} handler={handleSideMenuClose} />
-
+          <TagMenu hidden={sideMenuHidden} handler={handleSideMenuClose} />
           <Content />
         </div>
       </Wrapper>

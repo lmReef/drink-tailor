@@ -41,7 +41,7 @@ const SideMenuContainer = styled.div`
   }
 `;
 
-const SideMenu = ({ hidden, handler }) => {
+const TagMenu = ({ hidden, handler }) => {
   return (
     <SideMenuContainer className={hidden && 'side-menu-hidden'}>
       <div className="close-side-menu-button" onClick={handler}>
@@ -52,4 +52,4 @@ const SideMenu = ({ hidden, handler }) => {
   );
 };
 
-export default SideMenu;
+export default TagMenu;
