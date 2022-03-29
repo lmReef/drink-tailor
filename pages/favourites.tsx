@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
@@ -10,7 +10,6 @@ import { clearTags } from '../components/common/tags/tagSlice';
 
 const Index = () => {
   const dispatch = useDispatch();
-  const [sideMenuHidden, setSideMenuHidden] = useState<boolean>(false);
 
   useEffect(() => {
     // set redux state

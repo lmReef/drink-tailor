@@ -1,11 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Navbar from '../components/nav-bar/navbar';
 import Content from '../components/content/content';
 import { setFavouriteDrinks } from '../components/favouritesSlice';
 import { changeTheme } from '../styles/themeSlice';
 import SideMenu from '../components/side-menu/side-menu';
-import { setDrinks } from '../components/content/drinksSlice';
+import { clearDrinks, setDrinks } from '../components/content/drinksSlice';
 import { clearTags } from '../components/common/tags/tagSlice';
 import { useRouter } from 'next/router';
 import api from '../components/common/axios-setup';
@@ -39,8 +39,9 @@ const Index = () => {
       }
     };
 
+    dispatch(clearDrinks());
     searchForDrink();
-  }, [router.query]);
+  }, [dispatch, router.query]);
 
   return (
     <>

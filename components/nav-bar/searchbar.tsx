@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { breakpoints_max, colors } from '../../styles/theme';
 import { useEffect, useRef } from 'react';
-import { useDispatch } from 'react-redux';
 import { useRouter } from 'next/router';
 
 const StyledSearchbar = styled.div`
@@ -62,6 +61,11 @@ const Searchbar = () => {
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [input]);
+
+  useEffect(() => {
+    if (router.pathname.includes('/search'))
+      input.current.value = router.query.name as string;
+  }, [router.pathname, router.query]);
 
   return (
     <StyledSearchbar>

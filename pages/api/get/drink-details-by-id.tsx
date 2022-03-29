@@ -16,7 +16,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   };
 
   const { data } = await axios.request(options);
-
+  // TODO: catch 500 error + others
   res.status(200).json(data.drinks[0]);
 };
 

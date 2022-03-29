@@ -17,7 +17,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { data } = await axios.request(options);
 
-  res.status(200).json(data.drinks);
+  if (typeof data.drinks === 'string') res.status(200).json([]);
+  else res.status(200).json(data.drinks);
 };
 
 export default handler;

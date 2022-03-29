@@ -62,6 +62,7 @@ const Content = () => {
   const activeTags = useSelector(selectAllTags);
   const drinks = useSelector(selectAllDrinks);
   const contentRef = useRef<HTMLDivElement>();
+  const [loading, setLoading] = useState<boolean>(false);
   const hasTags = activeTags.length > 0;
 
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
@@ -82,15 +83,16 @@ const Content = () => {
 
         dispatch(setDrinks(drinksRes));
         scrollToTop();
+        setLoading(false);
       };
-
+      setLoading(true);
       handleTagsChange();
     }
   }, [activeTags, dispatch, router.pathname]);
 
   return (
     <StyledContent ref={contentRef} id="content">
-      {drinks?.length > 0 && typeof drinks !== 'string' ? (
+      {drinks?.length > 0 ? (
         <>
           {hasTags && <TopMenu />}
           <div
@@ -108,11 +110,11 @@ const Content = () => {
           It looks like you dont have any favourites yet. Add a few to see them
           here.
         </h2>
-      ) : !hasTags ? (
+      ) : router.pathname === '/tags' && !hasTags ? (
         <h2 className="no-drinks">
           Pick a few options on the left to get started.
         </h2>
-      ) : hasTags && drinks.length < 0 ? (
+      ) : router.pathname === '/tags' && hasTags && !loading ? (
         <h2 className="no-drinks">
           We dont know any drinks with that combination! Give something else a
           try.
