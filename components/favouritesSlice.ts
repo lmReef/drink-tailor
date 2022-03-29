@@ -52,7 +52,7 @@ export const {
   setFavouritesActive,
 } = favouritesSlice.actions;
 
-export const selectFavouriteDrinks = (state): string[] =>
+export const selectFavouriteDrinks = (state): DrinkBasic[] =>
   state.favs.favouriteDrinks;
 
 export const selectFavourite = (state, find: DrinkBasic): boolean =>
