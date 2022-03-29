@@ -14,17 +14,6 @@ const Index = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const searchForDrink = async () => {
-    const name = router.query.name;
-
-    if (name) {
-      const drinksRes: DrinkBasic[] = await (
-        await api.get('/api/get/drinks-by-name?name=' + name)
-      ).data;
-      dispatch(setDrinks(drinksRes));
-    }
-  };
-
   useEffect(() => {
     // set redux state
     if (typeof window !== 'undefined') {
@@ -39,6 +28,17 @@ const Index = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    const searchForDrink = async () => {
+      const name = router.query.name;
+
+      if (name) {
+        const drinksRes: DrinkBasic[] = await (
+          await api.get('/api/get/drinks-by-name?name=' + name)
+        ).data;
+        dispatch(setDrinks(drinksRes));
+      }
+    };
+
     searchForDrink();
   }, [router.query]);
 
