@@ -1,4 +1,3 @@
-import { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 
 import GlobalStyle from '../styles/globals';

@@ -18,8 +18,6 @@ export const favouritesSlice = createSlice({
       state.favouriteDrinks = action.payload;
     },
     addDrink: (state, action) => {
-      console.log(state.favouriteDrinks);
-
       state.favouriteDrinks.push(action.payload);
 
       localStorage.setItem('favourites', JSON.stringify(state.favouriteDrinks));

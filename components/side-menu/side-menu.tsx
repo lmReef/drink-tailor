@@ -1,9 +1,4 @@
-import {
-  faHome,
-  faStar,
-  faTag,
-  faTimes,
-} from '@fortawesome/free-solid-svg-icons';
+import { faHome, faStar, faTag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -55,7 +50,6 @@ const SideMenuContainer = styled.div`
 
 const SideMenu = () => {
   const router = useRouter();
-  console.log(router.pathname);
 
   return (
     <SideMenuContainer>

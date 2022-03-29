@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 
-import { breakpoints_max, colors } from '../../styles/theme';
+import { colors } from '../../styles/theme';
 import Searchbar from './searchbar';
 import ThemeButton from './theme-button';
 
