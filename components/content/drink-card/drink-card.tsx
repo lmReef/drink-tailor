@@ -58,10 +58,12 @@ const StyledDrinkCard = styled.div`
     width: 100%;
 
     h3 {
-      font-size: 1.3rem;
+      font-size: 1.35rem;
     }
 
     .card-content {
+      font-size: 1.15rem;
+
       h4 {
         margin-top: 1rem;
       }
@@ -84,6 +86,7 @@ const StyledDrinkCard = styled.div`
             padding: 0.2rem 0.5rem;
             height: fit-content;
             border-radius: 9001px;
+            font-size: 1rem;
           }
         }
       }
