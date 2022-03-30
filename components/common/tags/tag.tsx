@@ -1,8 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { colors } from '../../../styles/theme';
+import { clearDrinks } from '../../content/drinksSlice';
 import { addTag, removeTag, selectAllTags, selectTag } from './tagSlice';
 
 // TODO: make the tags look better
@@ -49,10 +51,15 @@ const StyledDiv = styled.div`
 `;
 
 const Tag = ({ name, icon = null }) => {
+  const router = useRouter();
   const dispatch = useDispatch();
   const activeState = useSelector((state) => selectTag(state, name));
 
   const handleClick = () => {
+    if (router.pathname !== '/tags') {
+      dispatch(clearDrinks());
+      router.push('/tags');
+    }
     dispatch(activeState ? removeTag(name) : addTag(name));
   };
 

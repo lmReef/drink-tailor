@@ -77,6 +77,8 @@ const Content = () => {
           return;
         }
 
+        setLoading(true);
+
         const drinksRes: DrinkBasic[] = await (
           await api.get('/api/get/drinks-by-tags?tags=' + activeTags)
         ).data;
@@ -85,7 +87,6 @@ const Content = () => {
         scrollToTop();
         setLoading(false);
       };
-      setLoading(true);
       handleTagsChange();
     }
   }, [activeTags, dispatch, router.pathname]);
