@@ -16,7 +16,7 @@ const StyledButton = styled.button`
   cursor: pointer;
 `;
 
-const Button = ({ text = '', className = null }) => {
+const Button = ({ text = '', className = undefined }) => {
   return <StyledButton className={className}>{text}</StyledButton>;
 };
 

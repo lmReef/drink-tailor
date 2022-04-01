@@ -80,21 +80,21 @@ const Index = () => {
           <ListType className="col">
             <h2>
               <span
-                className={listType === 'popular' && 'active'}
+                className={listType === 'popular' ? 'active' : undefined}
                 onClick={() => setListType('popular')}
               >
                 Popular
               </span>
               |
               <span
-                className={listType === 'latest' && 'active'}
+                className={listType === 'latest' ? 'active' : undefined}
                 onClick={() => setListType('latest')}
               >
                 Latest
               </span>
               |
               <span
-                className={listType === 'random' && 'active'}
+                className={listType === 'random' ? 'active' : undefined}
                 onClick={() => {
                   if (listType === 'random') {
                     getDrinks();

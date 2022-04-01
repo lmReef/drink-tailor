@@ -37,7 +37,7 @@ const FavouritesButton = ({ drink }) => {
 
   return (
     <StyledFavButton
-      className={`favourites-star ${active && 'favourites-active'}`}
+      className={`favourites-star ${active ? 'favourites-active' : undefined}`}
       onClick={onClick}
     >
       <FontAwesomeIcon icon={faStar} />

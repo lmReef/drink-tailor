@@ -18,7 +18,7 @@ const TagMenuContainer = styled.div`
 
 const TagMenu = ({ hidden, handler }) => {
   return (
-    <TagMenuContainer className={hidden && 'side-menu-hidden'}>
+    <TagMenuContainer className={hidden ? 'side-menu-hidden' : undefined}>
       <Filter />
     </TagMenuContainer>
   );

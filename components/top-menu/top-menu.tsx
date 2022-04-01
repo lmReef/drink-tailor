@@ -72,7 +72,7 @@ const TopMenu = () => {
   }, []);
 
   return (
-    <StyledTopMenu id="top-menu" className={hide && 'hidden'}>
+    <StyledTopMenu id="top-menu" className={hide ? 'hidden' : undefined}>
       <Tags tags={tags} sort={false} icon={faTimes} />
     </StyledTopMenu>
   );

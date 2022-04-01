@@ -57,7 +57,7 @@ const SideMenu = () => {
         <a>
           <div
             className={`button-container ${
-              router.pathname === '/' && 'active'
+              router.pathname === '/' ? 'active' : undefined
             }`}
           >
             <FontAwesomeIcon icon={faHome} />
@@ -68,7 +68,7 @@ const SideMenu = () => {
         <a>
           <div
             className={`button-container ${
-              router.pathname === '/tags' && 'active'
+              router.pathname === '/tags' ? 'active' : undefined
             }`}
           >
             <FontAwesomeIcon icon={faTag} />
@@ -79,7 +79,7 @@ const SideMenu = () => {
         <a>
           <div
             className={`button-container ${
-              router.pathname === '/favourites' && 'active'
+              router.pathname === '/favourites' ? 'active' : undefined
             }`}
           >
             <FontAwesomeIcon icon={faStar} />

@@ -62,6 +62,7 @@ const tagsList = {
     'Pineapple',
     'Sugar',
     'Elderflower cordial',
+    'Milk',
   ],
 };
 
