@@ -11,6 +11,7 @@ import api from '../common/axios-setup';
 import TopMenu from '../top-menu/top-menu';
 import { clearDrinks, selectAllDrinks, setDrinks } from './drinksSlice';
 import { useRouter } from 'next/router';
+import AdsenseAd from '../common/adsense-ad';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -54,6 +55,10 @@ const StyledContent = styled.div`
       font-size: 2.3rem;
     }
   }
+
+  ins {
+    display: block;
+  }
 `;
 
 const Content = () => {
@@ -66,6 +71,26 @@ const Content = () => {
   const hasTags = activeTags.length > 0;
 
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
+
+  const insertAdsInContent = (index) => {
+    const adInterval = 3;
+
+    if (index % adInterval === 0) {
+      return (
+        <>
+          Ad:
+          <AdsenseAd />
+        </>
+      );
+    } else if (index === drinks.length && drinks.length < adInterval) {
+      return (
+        <>
+          Ad:
+          <AdsenseAd />
+        </>
+      );
+    }
+  };
 
   // handler for when the tags are changed via any method
   useEffect(() => {
@@ -102,7 +127,12 @@ const Content = () => {
             }`}
           >
             {drinks?.map((drink, index) => {
-              return <DrinkCard key={index} drink={drink} api={api} />;
+              return (
+                <>
+                  <DrinkCard key={index} drink={drink} api={api} />
+                  {insertAdsInContent(index)}
+                </>
+              );
             })}
           </div>
         </>
