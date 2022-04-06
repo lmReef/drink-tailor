@@ -73,9 +73,11 @@ const Content = () => {
   const scrollToTop = () => contentRef.current.scrollTo(0, 0);
 
   const insertAdsInContent = (index) => {
-    const adInterval = 3;
+    const adInterval = 4;
 
-    if (index % adInterval === 0) {
+    if ((index + 1) % adInterval === 0 && index > 0) {
+      console.log(index);
+
       return (
         <>
           Ad:
