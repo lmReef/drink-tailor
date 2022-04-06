@@ -76,21 +76,9 @@ const Content = () => {
     const adInterval = 4;
 
     if ((index + 1) % adInterval === 0 && index > 0) {
-      console.log(index);
-
-      return (
-        <>
-          Ad:
-          <AdsenseAd />
-        </>
-      );
+      return <AdsenseAd />;
     } else if (index === drinks.length && drinks.length < adInterval) {
-      return (
-        <>
-          Ad:
-          <AdsenseAd />
-        </>
-      );
+      return <AdsenseAd />;
     }
   };
 
