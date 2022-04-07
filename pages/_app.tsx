@@ -8,13 +8,13 @@ import Script from 'next/script';
 function App({ Component, pageProps }) {
   return (
     <>
-      {/* <Script
+      <Script
         id="Adsense-id"
         data-ad-client="ca-pub-1450000289109452"
         async
         strategy="beforeInteractive"
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-      /> */}
+      />
       <Provider store={store}>
         <CustomThemeProvider>
           <GlobalStyle />
