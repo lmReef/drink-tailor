@@ -1,4 +1,9 @@
-import { faHome, faStar, faTag } from '@fortawesome/free-solid-svg-icons';
+import {
+  faHome,
+  faQuestion,
+  faStar,
+  faTag,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import Link from 'next/link';
@@ -42,10 +47,6 @@ const SideMenuContainer = styled.div`
       }
     }
   }
-
-  @media only screen and (max-width: ${breakpoints_max.lg}) {
-    display: none;
-  }
 `;
 
 const SideMenu = () => {
@@ -83,6 +84,17 @@ const SideMenu = () => {
             }`}
           >
             <FontAwesomeIcon icon={faStar} />
+          </div>
+        </a>
+      </Link>
+      <Link href="/">
+        <a>
+          <div
+            className={`button-container ${
+              router.pathname === '/about' ? 'active' : undefined
+            }`}
+          >
+            <FontAwesomeIcon icon={faQuestion} />
           </div>
         </a>
       </Link>
