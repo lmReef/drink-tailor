@@ -23,7 +23,7 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
             <title>Drink Tailor</title>
             <meta name="description" content="Cocktail recommender" />
-            <link rel="icon" href="/favicon.ico" />
+            <link rel="icon" href="/images/favicon.ico" />
             <link
               href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
               rel="stylesheet"
