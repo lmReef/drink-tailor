@@ -22,3 +22,4 @@ artifacts:
     - package-lock.json
     - next.config.js
     - .npmrc
+    - .ebextensions/**/*
