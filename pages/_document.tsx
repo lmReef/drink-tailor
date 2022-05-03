@@ -23,23 +23,23 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
             <title>Drink Tailor</title>
             <meta name="description" content="Cocktail recommender" />
-            <link rel="shortcut icon" href="/images/favicon.ico" />
+            <link rel="shortcut icon" href="/assets/images/favicon.ico" />
             <link
               rel="apple-touch-icon"
               sizes="180x180"
-              href="/images/apple-touch-icon.png"
+              href="/assets/images/apple-touch-icon.png"
             />
             <link
               rel="icon"
               type="image/png"
               sizes="32x32"
-              href="/images/favicon-32x32.png"
+              href="/assets/images/favicon-32x32.png"
             />
             <link
               rel="icon"
               type="image/png"
               sizes="16x16"
-              href="/images/favicon-16x16.png"
+              href="/assets/images/favicon-16x16.png"
             />
             <link
               href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
