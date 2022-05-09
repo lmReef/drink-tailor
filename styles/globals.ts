@@ -12,6 +12,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     color: inherit;
     text-decoration: none;
+
+    :active, :focus {
+      outline: none;
+    }
   }
 
   * {
