@@ -23,6 +23,10 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
             <title>Drink Tailor</title>
             <meta name="description" content="Cocktail recommender" />
+            <meta
+              name="google-site-verification"
+              content="4lu8PXHVMqY8XR3nnFwfuG8XULRJEO3PymODSnwfqM4"
+            />
             <link rel="shortcut icon" href="/assets/images/favicon.ico" />
             <link
               rel="apple-touch-icon"
