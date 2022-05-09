@@ -24,6 +24,10 @@ const SideMenuContainer = styled.div`
 
   transition: all 0.2s ease-in-out;
 
+  a:last-of-type {
+    margin-top: auto;
+  }
+
   .button-container {
     width: 100%;
     height: 4rem;
@@ -108,7 +112,7 @@ const SideMenu = () => {
           </div>
         </a>
       </Link>
-      <Link href="/">
+      <Link href="/about">
         <a>
           <div
             className={`button-container ${
