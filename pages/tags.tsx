@@ -7,7 +7,7 @@ import { setFavouriteDrinks } from '../components/favouritesSlice';
 import { changeTheme } from '../styles/themeSlice';
 import SideMenu from '../components/side-menu/side-menu';
 
-const Index = () => {
+const Tags = () => {
   const dispatch = useDispatch();
   const [sideMenuHidden, setSideMenuHidden] = useState<boolean>(false);
 
@@ -40,4 +40,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Tags;

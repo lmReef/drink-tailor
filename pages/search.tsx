@@ -10,7 +10,7 @@ import { clearTags } from '../components/common/tags/tagSlice';
 import { useRouter } from 'next/router';
 import api from '../components/common/axios-setup';
 
-const Index = () => {
+const Search = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -56,4 +56,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Search;

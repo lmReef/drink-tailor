@@ -11,7 +11,7 @@ import SideMenu from '../components/side-menu/side-menu';
 import { setDrinks } from '../components/content/drinksSlice';
 import { clearTags } from '../components/common/tags/tagSlice';
 
-const Index = () => {
+const Favourites = () => {
   const dispatch = useDispatch();
   const favouritesState = useSelector(selectFavouriteDrinks);
 
@@ -48,4 +48,4 @@ const Index = () => {
   );
 };
 
-export default Index;
+export default Favourites;
