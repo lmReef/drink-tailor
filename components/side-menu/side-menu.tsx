@@ -15,6 +15,9 @@ const SideMenuContainer = styled.div`
   width: 4rem;
   position: relative;
   left: 0;
+  display: flex;
+  flex-direction: column;
+  z-index: 5;
 
   padding-top: 2rem;
   background-color: ${colors.background2};
@@ -45,6 +48,24 @@ const SideMenuContainer = styled.div`
       svg {
         color: ${colors.accent};
       }
+    }
+  }
+
+  @media only screen and (max-width: ${breakpoints_max.sm}) {
+    height: 4rem;
+    width: 100%;
+    position: absolute;
+    flex-direction: row;
+    left: 0;
+    bottom: 0;
+    padding-top: 0;
+
+    > a {
+      flex-grow: 1;
+    }
+
+    .button-container {
+      margin: 0;
     }
   }
 `;

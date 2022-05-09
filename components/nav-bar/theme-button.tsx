@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import { faSun } from '@fortawesome/free-solid-svg-icons';
 
-import { colors } from '../../styles/theme';
+import { breakpoints_max, colors } from '../../styles/theme';
 import { changeTheme, selectTheme } from '../../styles/themeSlice';
 
 const StyledButton = styled.div`
@@ -16,6 +16,10 @@ const StyledButton = styled.div`
   background-color: ${colors.secondary};
   border-radius: 110px;
   cursor: pointer;
+
+  @media only screen and (max-width: ${breakpoints_max.sm}) {
+    display: none;
+  }
 `;
 
 const StyledSwitch = styled.div`

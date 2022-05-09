@@ -11,9 +11,9 @@ const TagMenuContainer = styled.div`
   padding: 0.8rem;
   background-color: ${colors.background2};
 
-  @media only screen and (max-width: ${breakpoints_max.lg}) {
+  /* @media only screen and (max-width: ${breakpoints_max.sm}) {
     display: none;
-  }
+  } */
 `;
 
 const TagMenu = ({ hidden, handler }) => {

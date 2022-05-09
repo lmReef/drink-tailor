@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
-import { colors } from '../../styles/theme';
+import { breakpoints_min, colors } from '../../styles/theme';
 import { selectAllTags } from '../common/tags/tagSlice';
 import DrinkCard from './drink-card/drink-card';
 import api from '../common/axios-setup';
@@ -24,7 +24,9 @@ const StyledContent = styled.div`
 
   .drink-card-wrapper {
     &.add-margin {
-      margin: 0 10rem;
+      @media only screen and (min-width: ${breakpoints_min.sm}) {
+        margin: 0 10rem;
+      }
     }
   }
 
@@ -120,6 +122,7 @@ const Content = () => {
               return (
                 <>
                   <DrinkCard key={index} drink={drink} api={api} />
+                  <br />
                   {insertAdsInContent(index)}
                 </>
               );

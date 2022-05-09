@@ -38,8 +38,9 @@ const StyledSearchbar = styled.div`
     cursor: pointer;
   }
 
-  @media only screen and (max-width: ${breakpoints_max.lg}) {
-    display: none;
+  @media only screen and (max-width: ${breakpoints_max.sm}) {
+    max-width: 65%;
+    margin-left: 0;
   }
 `;
 

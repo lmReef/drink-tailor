@@ -1,8 +1,10 @@
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMartiniGlassCitrus } from '@fortawesome/free-solid-svg-icons';
 
-import { colors } from '../../styles/theme';
+import { selectIsMobile } from '../../styles/themeSlice';
+import { breakpoints_max, colors } from '../../styles/theme';
 import Searchbar from './searchbar';
 import ThemeButton from './theme-button';
 
@@ -34,11 +36,17 @@ const StyledNavbar = styled.div`
       color: ${colors.text1};
       margin: auto 0;
       letter-spacing: 1px;
+
+      @media only screen and (max-width: ${breakpoints_max.sm}) {
+        display: none;
+      }
     }
   }
 `;
 
 const Navbar = () => {
+  const isMobile = useSelector(selectIsMobile);
+
   return (
     <StyledNavbar>
       <div className="nav-header" onClick={() => (window.location.href = '/')}>

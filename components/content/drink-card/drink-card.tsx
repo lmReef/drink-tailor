@@ -10,6 +10,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Tag from '../../common/tags/tag';
 import { Axios } from 'axios';
 import FavouritesButton from './favourites-button';
+import { breakpoints_max } from '../../../styles/theme';
 
 interface Ingredient {
   ingredient: string;
@@ -90,6 +91,16 @@ const StyledDrinkCard = styled.div`
           }
         }
       }
+    }
+  }
+
+  @media only screen and (max-width: ${breakpoints_max.sm}) {
+    flex-direction: column;
+
+    .card-image {
+      width: 100%;
+      height: auto;
+      margin: 0 0 1rem 0;
     }
   }
 `;
