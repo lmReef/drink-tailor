@@ -66,6 +66,11 @@ const StyledContent = styled.div`
   ins {
     display: block;
   }
+
+  @media only screen and (max-width: ${breakpoints_max.sm}) {
+    // expand content a bit on mobile to account for nav
+    height: calc(100% - 4rem);
+  }
 `;
 
 const Content = () => {
