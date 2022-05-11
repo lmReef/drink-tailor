@@ -94,6 +94,11 @@ const Content = () => {
     }
   };
 
+  // TODO: implement this for better content overflow handling on mobile
+  // function isOverflown(element) {
+  //   return element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth;
+  // }
+
   // handler for when the tags are changed via any method
   useEffect(() => {
     // only handle changing tags if we on the tags page
