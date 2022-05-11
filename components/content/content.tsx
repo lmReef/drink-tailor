@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 
-import { breakpoints_min, colors } from '../../styles/theme';
+import { breakpoints_max, breakpoints_min, colors } from '../../styles/theme';
 import { selectAllTags } from '../common/tags/tagSlice';
 import DrinkCard from './drink-card/drink-card';
 import api from '../common/axios-setup';
@@ -55,6 +55,10 @@ const StyledContent = styled.div`
     svg {
       color: ${colors.accent};
       font-size: 2.3rem;
+    }
+
+    @media only screen and (max-width: ${breakpoints_max.sm}) {
+      margin: 5rem 1rem;
     }
   }
 
