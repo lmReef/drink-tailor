@@ -33,9 +33,10 @@ const StyledContent = styled.div`
   .no-drinks {
     position: relative;
     width: 50%;
-    height: 8rem;
+    height: fit-content;
     margin: auto;
-    top: calc(50% - 8rem);
+    top: 50%;
+    transform: translateY(calc(-50% - 3rem));
     font-size: 3rem;
   }
 

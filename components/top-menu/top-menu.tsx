@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
-import { colors } from '../../styles/theme';
+import { breakpoints_max, colors } from '../../styles/theme';
 import Tags from '../common/tags/tags';
 import { selectAllTags } from '../common/tags/tagSlice';
 import { useEffect, useState } from 'react';
@@ -45,6 +45,10 @@ const StyledTopMenu = styled.div`
         margin-right: 0.3rem;
       }
     }
+  }
+
+  @media only screen and (max-width: ${breakpoints_max.sm}) {
+    display: none;
   }
 `;
 
