@@ -16,7 +16,6 @@ const TagMenuContainer = styled.div`
   padding: 0.8rem;
   background-color: ${colors.background2};
 
-  // TODO: fix the transform flicker
   transition: left 0.1s ease-in-out;
   left: 0;
 
