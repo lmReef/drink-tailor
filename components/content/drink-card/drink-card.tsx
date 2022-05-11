@@ -71,11 +71,16 @@ const StyledDrinkCard = styled.div`
 
       .ingredient-div {
         max-height: 7rem;
-        max-width: fit-content;
+        width: fit-content;
+        max-width: 100%;
 
         display: flex;
         flex-direction: column;
         flex-wrap: wrap;
+
+        @media only screen and (max-width: ${breakpoints_max.sm}) {
+          max-height: unset;
+        }
 
         .ingredient-item {
           margin-right: 2rem;
