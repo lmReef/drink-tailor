@@ -11,6 +11,7 @@ import api from '../common/axios-setup';
 import TopMenu from '../top-menu/top-menu';
 import { clearDrinks, selectAllDrinks, setDrinks } from './drinksSlice';
 import { useRouter } from 'next/router';
+import { selectIsMobile } from '../../styles/themeSlice';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -76,6 +77,7 @@ const Content = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const activeTags = useSelector(selectAllTags);
+  const isMobile = useSelector(selectIsMobile);
   const drinks = useSelector(selectAllDrinks);
   const contentRef = useRef<HTMLDivElement>();
   const [loading, setLoading] = useState<boolean>(false);
@@ -136,7 +138,7 @@ const Content = () => {
               return (
                 <>
                   <DrinkCard key={index} drink={drink} api={api} />
-                  {/* <br /> */}
+                  {isMobile && <br />}
                   {/* {insertAdsInContent(index)} */}
                 </>
               );
