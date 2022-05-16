@@ -8,15 +8,7 @@ import Script from 'next/script';
 function App({ Component, pageProps }) {
   return (
     <>
-      {/* Google stuff */}
       {/* Ads */}
-      <Script
-        id="Adsense-id"
-        data-ad-client="ca-pub-1450000289109452"
-        async
-        strategy="beforeInteractive"
-        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1450000289109452"
-      />
       {/* Analytics */}
       <Script
         strategy="lazyOnload"

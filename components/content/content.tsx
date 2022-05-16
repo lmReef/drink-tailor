@@ -11,7 +11,6 @@ import api from '../common/axios-setup';
 import TopMenu from '../top-menu/top-menu';
 import { clearDrinks, selectAllDrinks, setDrinks } from './drinksSlice';
 import { useRouter } from 'next/router';
-import AdsenseAd from '../common/adsense-ad';
 
 const StyledContent = styled.div`
   height: 100%;
@@ -88,9 +87,9 @@ const Content = () => {
     const adInterval = 4;
 
     if ((index + 1) % adInterval === 0 && index > 0) {
-      return <AdsenseAd />;
+      // return <AdsenseAd index={index} />;
     } else if (index === drinks.length && drinks.length < adInterval) {
-      return <AdsenseAd />;
+      // return <AdsenseAd index={index} />;
     }
   };
 
@@ -137,8 +136,8 @@ const Content = () => {
               return (
                 <>
                   <DrinkCard key={index} drink={drink} api={api} />
-                  <br />
-                  {insertAdsInContent(index)}
+                  {/* <br /> */}
+                  {/* {insertAdsInContent(index)} */}
                 </>
               );
             })}
