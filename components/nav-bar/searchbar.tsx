@@ -33,7 +33,7 @@ const StyledSearchbar = styled.div`
     height: 1.5rem;
     top: 50%;
     right: 0;
-    translate: -1rem -0.75rem;
+    transform: translate(-1rem, -0.75rem);
     color: ${colors.text2};
     cursor: pointer;
   }
