@@ -5,12 +5,12 @@ import styled from 'styled-components';
 
 import ReactVisibilitySensor from 'react-visibility-sensor';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faShareNodes, faSpinner } from '@fortawesome/free-solid-svg-icons';
 
 import Tag from '../../common/tags/tag';
 import { Axios } from 'axios';
 import FavouritesButton from './favourites-button';
-import { breakpoints_max } from '../../../styles/theme';
+import { breakpoints_max, colors } from '../../../styles/theme';
 
 interface Ingredient {
   ingredient: string;
@@ -99,6 +99,49 @@ const StyledDrinkCard = styled.div`
     }
   }
 
+  /* share and fav buttons */
+  div.drink-card-button {
+    color: ${colors.text1};
+    font-size: 1.3rem;
+    margin-left: 1rem;
+    cursor: pointer;
+
+    svg {
+      transition: color 0.15s ease-out;
+      color: ${colors.secondary};
+      padding: 0.25rem;
+    }
+
+    &.favourites-active {
+      svg {
+        color: ${colors.accent};
+      }
+    }
+
+    &:first-of-type {
+      margin-left: auto;
+    }
+
+    &.share-button {
+      svg {
+        transition: color 0.9s ease-out;
+      }
+
+      :active {
+        .share-tooltip {
+          transition: all 0s;
+          visibility: visible;
+          color: ${colors.text1};
+        }
+
+        svg {
+          transition: color 0s;
+          color: ${colors.accent};
+        }
+      }
+    }
+  }
+
   @media only screen and (max-width: ${breakpoints_max.sm}) {
     flex-direction: column;
 
@@ -140,6 +183,14 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
     }
 
     return ingredients;
+  };
+
+  const handleShare = () => {
+    // TODO: fix '&' in searchbar not working
+    const shareUrl = encodeURI(
+      `http://drinktailor.net/search?name=${drinkDetails.strDrink}`,
+    );
+    navigator.clipboard.writeText(shareUrl);
   };
 
   useEffect(() => {
@@ -189,6 +240,13 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
               <span>
                 <div className="row">
                   <h3>{drink.strDrink}</h3>
+                  <div
+                    className="drink-card-button share-button"
+                    onClick={handleShare}
+                  >
+                    {/* <div className="share-tooltip">Copied to Clipboard!</div> */}
+                    <FontAwesomeIcon icon={faShareNodes} />
+                  </div>
                   <FavouritesButton drink={drink} />
                 </div>
                 {drinkDetails?.strAlcoholic !== 'Alcoholic' && (
