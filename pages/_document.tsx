@@ -22,7 +22,10 @@ export default class MyDocument extends Document {
             {initialProps.styles}
             {sheet.getStyleElement()}
             <title>Drink Tailor</title>
-            <meta name="description" content="Cocktail recommender" />
+            <meta
+              name="description"
+              content="Browse hundreds of cocktail recipies"
+            />
             {/* disable user scale because we dont want it on mobile */}
             {/* esp because input ele zoom */}
             <meta
