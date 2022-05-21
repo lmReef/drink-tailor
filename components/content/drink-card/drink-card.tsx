@@ -160,7 +160,7 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
   const [ingredients, setIngredients] = useState<Ingredient[]>([]);
   const [loading, setLoading] = useState<boolean>(false);
 
-  // TODO: add sharing
+  // TODO: improve sharing
 
   // only make api requests if component is visible so I dont spam it
   const onChange = async (isVisible) => {
