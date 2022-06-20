@@ -1,0 +1,31 @@
+{
+  "short_name": "Drink Tailor",
+  "name": "Drink Tailor: Cocktail Ideas",
+  "icons": [
+    {
+      "src": "/assets/images/android-chrome-512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "/assets/images/android-chrome-192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#fef9ef",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "theme_color": "#fef9ef",
+  "shortcuts": [
+    {
+      "name": "Favourites",
+      "description": "View your saved favourites.",
+      "url": "/favourites"
+    }
+  ],
+  "description": "Browse hundreds of cocktail recipies.",
+  "screenshots": []
+}

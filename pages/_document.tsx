@@ -18,7 +18,7 @@ export default class MyDocument extends Document {
       return {
         ...initialProps,
         styles: (
-          <Html>
+          <Html lang="en">
             {initialProps.styles}
             {sheet.getStyleElement()}
             <title>Drink Tailor</title>
@@ -26,18 +26,21 @@ export default class MyDocument extends Document {
               name="description"
               content="Browse hundreds of cocktail recipies"
             />
+            <link rel="manifest" href="/manifest.json" />
             {/* disable user scale because we dont want it on mobile */}
             {/* esp because input ele zoom */}
             <meta
               name="viewport"
               content="initial-scale=1.0, user-scalable=no"
             />
+
             {/* google verification */}
             <meta
               name="google-site-verification"
               content="4lu8PXHVMqY8XR3nnFwfuG8XULRJEO3PymODSnwfqM4"
             />
 
+            {/* favicons */}
             <link rel="shortcut icon" href="/assets/images/favicon.ico" />
             <link
               rel="apple-touch-icon"
@@ -56,6 +59,8 @@ export default class MyDocument extends Document {
               sizes="16x16"
               href="/assets/images/favicon-16x16.png"
             />
+
+            {/* fonts */}
             <link
               href="https://fonts.googleapis.com/css?family=Quicksand&display=swap"
               rel="stylesheet"
