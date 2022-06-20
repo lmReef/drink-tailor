@@ -38,7 +38,7 @@ export default class MyDocument extends Document {
               property="og:image"
               content="/assets/images/android-chrome-512x512.png"
             />
-            <meta property="og:url" content="https://DrinkTailor.net" />
+            <meta property="og:url" content="https://drinktailor.net" />
 
             {/* Twitter meta tags */}
             <meta name="twitter:title" content="Drink Tailor" />
@@ -46,7 +46,7 @@ export default class MyDocument extends Document {
               name="twitter:description"
               content="Browse hundreds of cocktail recipies"
             />
-            <meta name="twitter:url" content="https://DrinkTailor.net" />
+            <meta name="twitter:url" content="https://drinktailor.net" />
             <meta
               name="twitter:card"
               content="Browse hundreds of cocktail recipies"
