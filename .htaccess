@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteCond %{HTTP_HOST} ^www\.drinktailor\.net$
+RewriteRule ^/?$ "https\:\/\/drinktailor\.net\/" [R=301,L]
