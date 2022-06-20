@@ -27,6 +27,31 @@ export default class MyDocument extends Document {
               content="Browse hundreds of cocktail recipies"
             />
             <link rel="manifest" href="/manifest.json" />
+
+            {/* Facebook meta tags */}
+            <meta property="og:title" content="Drink Tailor" />
+            <meta
+              property="og:description"
+              content="Browse hundreds of cocktail recipies"
+            />
+            <meta
+              property="og:image"
+              content="/assets/images/android-chrome-512x512.png"
+            />
+            <meta property="og:url" content="https://DrinkTailor.net" />
+
+            {/* Twitter meta tags */}
+            <meta name="twitter:title" content="Drink Tailor" />
+            <meta
+              name="twitter:description"
+              content="Browse hundreds of cocktail recipies"
+            />
+            <meta name="twitter:url" content="https://DrinkTailor.net" />
+            <meta
+              name="twitter:card"
+              content="Browse hundreds of cocktail recipies"
+            />
+
             {/* disable user scale because we dont want it on mobile */}
             {/* esp because input ele zoom */}
             <meta
