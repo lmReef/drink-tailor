@@ -37,3 +37,4 @@ jspm_packages
 .next
 .vscode
 # package-lock.json
+.env.local

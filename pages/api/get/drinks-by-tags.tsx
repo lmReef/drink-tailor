@@ -11,7 +11,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     params: { i: `${tags.split(',').reduce((a, b) => `${a},${b}`)}` },
     headers: {
       'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
-      'x-rapidapi-key': 'cd095dd235mshadd3945f9bfaac1p1347b1jsnb88073d8b4f0',
+      'x-rapidapi-key': process.env.RAPID_API_KEY,
     },
   };
 

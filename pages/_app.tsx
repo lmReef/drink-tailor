@@ -12,14 +12,14 @@ function App({ Component, pageProps }) {
       {/* Analytics */}
       <Script
         strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+        src={'https://www.googletagmanager.com/gtag/js?id=G-30X14WKX91'}
       />
       <Script strategy="lazyOnload" id="google-analytics-inline">
         {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-          gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+          gtag('config', 'G-30X14WKX91', {
           page_path: window.location.pathname,
           });
         `}
