@@ -11,6 +11,9 @@ import Tag from '../../common/tags/tag';
 import { Axios } from 'axios';
 import FavouritesButton from './favourites-button';
 import { breakpoints_max, colors } from '../../../styles/theme';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectUnit } from '../drinksSlice';
+import { convertUnits } from '../../helpers';
 
 interface Ingredient {
   ingredient: string;
@@ -154,6 +157,7 @@ const StyledDrinkCard = styled.div`
 `;
 
 const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
+  const unit = useSelector(selectUnit);
   const [sensorActive, setSensorActive] = useState<boolean>(true);
   const [visible, setVisible] = useState<boolean>(false);
   const [drinkDetails, setDrinkDetails] = useState<DrinkDetails>(null);
@@ -201,9 +205,14 @@ const DrinkCard = ({ drink, api }: { drink: DrinkBasic; api: Axios }) => {
     const getDrinkDetails = async () => {
       setLoading(true);
 
-      const data = await (
+      const data: DrinkDetails = await (
         await api.get('/api/get/drink-details-by-id?id=' + drink.idDrink)
       ).data;
+
+      for (let i = 1; i <= 15; i++) {
+        if (data[`strMeasure${i}`])
+          data[`strMeasure${i}`] = convertUnits(data[`strMeasure${i}`], unit);
+      }
 
       setDrinkDetails(data);
       setIngredients(getIngredients(data));
